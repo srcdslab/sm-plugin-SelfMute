@@ -4,13 +4,10 @@
 #include <sdktools>
 #include <adminmenu>
 #include <cstrike>
-
-#undef REQUIRE_PLUGIN
 #include <ccc>
-#include <zombiereloaded>
+#tryinclude <zombiereloaded>
 #tryinclude <voiceannounce_ex>
 #include <AdvancedTargeting>
-#define REQUIRE_PLUGIN
 
 #pragma newdecls required
 
@@ -172,12 +169,20 @@ void UpdateSpecialMutesOtherClients(int client)
 		if(g_SpecialMutes[i] & MUTE_SPEC && Team == CS_TEAM_SPECTATOR)
 			Flags |= MUTE_SPEC;
 
+#if defined _zr_included
 		else if(g_SpecialMutes[i] & MUTE_CT && Alive &&
 			((g_Plugin_zombiereloaded && ZR_IsClientHuman(client)) || (!g_Plugin_zombiereloaded && Team == CS_TEAM_CT)))
+#else
+		else if(g_SpecialMutes[i] & MUTE_CT && Alive && Team == CS_TEAM_CT)
+#endif
 			Flags |= MUTE_CT;
 
+#if defined _zr_included
 		else if(g_SpecialMutes[i] & MUTE_T && Alive &&
 			((g_Plugin_zombiereloaded && ZR_IsClientZombie(client)) || (!g_Plugin_zombiereloaded && Team == CS_TEAM_T)))
+#else
+		else if(g_SpecialMutes[i] & MUTE_T && Alive && Team == CS_TEAM_T)
+#endif
 			Flags |= MUTE_T;
 
 		else if(g_SpecialMutes[i] & MUTE_DEAD && !Alive)
@@ -218,12 +223,20 @@ void UpdateSpecialMutesThisClient(int client)
 		if(g_SpecialMutes[client] & MUTE_SPEC && Team == CS_TEAM_SPECTATOR)
 			Flags |= MUTE_SPEC;
 
+#if defined _zr_included
 		else if(g_SpecialMutes[client] & MUTE_CT && Alive &&
 			((g_Plugin_zombiereloaded && ZR_IsClientHuman(i) || (!g_Plugin_zombiereloaded) && Team == CS_TEAM_CT)))
+#else
+		else if(g_SpecialMutes[client] & MUTE_CT && Alive && Team == CS_TEAM_CT)
+#endif
 			Flags |= MUTE_CT;
 
+#if defined _zr_included
 		else if(g_SpecialMutes[client] & MUTE_T && Alive &&
 			((g_Plugin_zombiereloaded && ZR_IsClientZombie(i) || (!g_Plugin_zombiereloaded) && Team == CS_TEAM_T)))
+#else
+		else if(g_SpecialMutes[client] & MUTE_T && Alive && Team == CS_TEAM_T)
+#endif
 			Flags |= MUTE_T;
 
 		else if(g_SpecialMutes[client] & MUTE_DEAD && !Alive)
