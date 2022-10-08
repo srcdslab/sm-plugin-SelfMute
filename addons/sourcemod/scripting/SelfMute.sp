@@ -323,13 +323,13 @@ public Action OnClientJoinCheck(Handle timer, int userid)
 	Transaction T_ClientJoin = SQL_CreateTransaction();	
 				
 	char sQuery0[1024];
-	g_hDB.Format(sQuery0, sizeof(sQuery0), "SELECT `target_steamid` FROM `ClientsMute` WHERE client_steamid='%s'", SteamID);
+	g_hDB.Format(sQuery0, sizeof(sQuery0), "SELECT `target_steamid` FROM `clients_mute` WHERE client_steamid='%s'", SteamID);
 	
 	char sQuery1[1024];
-	g_hDB.Format(sQuery1, sizeof(sQuery1), "SELECT `client_steamid` FROM `ClientsMute` WHERE target_steamid='%s'", SteamID);
+	g_hDB.Format(sQuery1, sizeof(sQuery1), "SELECT `client_steamid` FROM `clients_mute` WHERE target_steamid='%s'", SteamID);
 	
 	char sQuery2[1024];
-	g_hDB.Format(sQuery2, sizeof(sQuery2), "SELECT `group_filter` FROM `GroupsMute` WHERE client_steamid='%s'", SteamID);
+	g_hDB.Format(sQuery2, sizeof(sQuery2), "SELECT `group_filter` FROM `groups_mute` WHERE client_steamid='%s'", SteamID);
 	
 	T_ClientJoin.AddQuery(sQuery0);
 	T_ClientJoin.AddQuery(sQuery1);
@@ -405,7 +405,7 @@ stock void SQL_InsertIntoTable(int client, int target)
 	g_hDB.Escape(TargetName, sTargetName, sizeof(sTargetName));
 	
 	char sQuery[3000];
-	g_hDB.Format(sQuery, sizeof(sQuery), "INSERT INTO `ClientsMute` (`client_name`, `client_steamid`, `target_name`, `target_steamid`) VALUES ('%s', '%s', '%s', '%s') \
+	g_hDB.Format(sQuery, sizeof(sQuery), "INSERT INTO `clients_mute` (`client_name`, `client_steamid`, `target_name`, `target_steamid`) VALUES ('%s', '%s', '%s', '%s') \
                                      ON DUPLICATE KEY UPDATE `client_name`='%s', `client_steamid`='%s', `target_name`='%s', `target_steamid`='%s'",
 									sClientName, ClientSteamID, sTargetName, TargetSteamID, sClientName, ClientSteamID, sTargetName, TargetSteamID);							
 	g_hDB.Query(SQL_InsertQueryCallback, sQuery);
@@ -440,13 +440,13 @@ stock void SQL_DeleteFromTable(int client, int target, const char[] SteamID = ""
 			return;
 			
 		char sQuery[1024];
-		g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `ClientsMute` WHERE `client_steamid`='%s' and target_steamid='%s'", ClientSteamID, TargetSteamID);	
+		g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `clients_mute` WHERE `client_steamid`='%s' and target_steamid='%s'", ClientSteamID, TargetSteamID);	
 		T_Delete.AddQuery(sQuery);
 	}
 	else if(target == -1)
 	{
 		char sQuery[1024];
-		g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `ClientsMute` WHERE `client_steamid`='%s' and target_steamid='%s'", ClientSteamID, SteamID);	
+		g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `clients_mute` WHERE `client_steamid`='%s' and target_steamid='%s'", ClientSteamID, SteamID);	
 		T_Delete.AddQuery(sQuery);
 	}
 	
@@ -473,7 +473,7 @@ stock void InsertGroupToTable(int client, const char[] SteamID, const char[] Gro
 	char ClientName[64];
 	GetClientName(client, ClientName, sizeof(ClientName));
 	char sQuery[1024];
-	g_hDB.Format(sQuery, sizeof(sQuery), "INSERT INTO `GroupsMute` (`client_name`, `client_steamid`, `group_name`, `group_filter`) VALUES ('%s', '%s', '%s', '%s')",
+	g_hDB.Format(sQuery, sizeof(sQuery), "INSERT INTO `groups_mute` (`client_name`, `client_steamid`, `group_name`, `group_filter`) VALUES ('%s', '%s', '%s', '%s')",
 																	ClientName, SteamID, GroupName, GroupFilter);
 	g_hDB.Query(SQL_InsertGroupCallback, sQuery);
 }
@@ -495,7 +495,7 @@ stock void DeleteGroupFromTable(int client, const char[] SteamID, const char[] G
 		return;
 		
 	char sQuery[1024];
-	g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `GroupsMute` WHERE client_steamid='%s' and group_filter='%s'", SteamID, GroupFilter);
+	g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `groups_mute` WHERE client_steamid='%s' and group_filter='%s'", SteamID, GroupFilter);
 	g_hDB.Query(SQL_DeleteGroupFromTable, sQuery);
 }
 
@@ -516,7 +516,7 @@ stock void DeleteAllGroupsFromTable(int client, const char[] SteamID)
 		return;
 
 	char sQuery[1024];
-	g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `GroupsMute` WHERE client_steamid='%s'", SteamID);
+	g_hDB.Format(sQuery, sizeof(sQuery), "DELETE FROM `groups_mute` WHERE client_steamid='%s'", SteamID);
 	g_hDB.Query(SQL_DeleteAllGroupsFromTable, sQuery);
 }
 
@@ -548,7 +548,7 @@ stock void DeleteAllClientMutes(int client, bool bGroups)
 	
 	int userid = GetClientUserId(client);
 	char sQuery[1024];
-	g_hDB.Format(sQuery, sizeof(sQuery), "SELECT `target_steamid` FROM `ClientsMute` WHERE client_steamid='%s'", SteamID);
+	g_hDB.Format(sQuery, sizeof(sQuery), "SELECT `target_steamid` FROM `clients_mute` WHERE client_steamid='%s'", SteamID);
 	g_hDB.Query(SQL_DeleteClientMute, sQuery, userid);
 }
 
@@ -1632,7 +1632,7 @@ void AddOfflineMutesToMenu(int client)
 			int userid = GetClientUserId(client);
 			
 			char sQuery[1024];
-			g_hDB.Format(sQuery, sizeof(sQuery), "SELECT `target_steamid`, `target_name` FROM `ClientsMute` WHERE client_steamid='%s'", SteamID);
+			g_hDB.Format(sQuery, sizeof(sQuery), "SELECT `target_steamid`, `target_name` FROM `clients_mute` WHERE client_steamid='%s'", SteamID);
 			SQL_TQuery(g_hDB, SQL_AddMutesToMenu, sQuery, userid);
 		}
 	}
@@ -1776,7 +1776,7 @@ void AddSavedGroupsToMenu(int client)
 		{
 			int userid = GetClientUserId(client);
 			char sQuery[1024];
-			g_hDB.Format(sQuery, sizeof(sQuery), "SELECT `group_filter`, `group_name` FROM `GroupsMute` WHERE client_steamid='%s'", SteamID);
+			g_hDB.Format(sQuery, sizeof(sQuery), "SELECT `group_filter`, `group_name` FROM `groups_mute` WHERE client_steamid='%s'", SteamID);
 			SQL_TQuery(g_hDB, SQL_GroupsMenu, sQuery, userid);
 		}
 	}
@@ -1857,7 +1857,7 @@ public int MenuHandler_SavedGroups(Menu menu, MenuAction action, int param1, int
 
 void DisplayUnSavedGroupsMuteMenu(int client)
 {
-	Menu menu = new Menu(MenuHandler_UnSavedGrouos);
+	Menu menu = new Menu(MenuHandler_UnSavedGroups);
 	menu.SetTitle("[Self-Mute] Session Groups muted");
 
 	if(GetClientUnSavedGroupsCount(client) >= 1)
@@ -1912,7 +1912,7 @@ int GetClientUnSavedGroupsCount(int client)
 	return count;
 }
 
-public int MenuHandler_UnSavedGrouos(Menu menu, MenuAction action, int param1, int param2)
+public int MenuHandler_UnSavedGroups(Menu menu, MenuAction action, int param1, int param2)
 {
 	switch(action)
 	{
