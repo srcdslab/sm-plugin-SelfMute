@@ -42,8 +42,7 @@ bool
 	, g_bClientSavedTargets[MAXPLAYERS + 1][MAXPLAYERS + 1]
 	, g_bClientNotSavedTargets[MAXPLAYERS + 1][MAXPLAYERS + 1]
 	, g_bClientUnSavedGroups[MAXPLAYERS + 1][65]
-	, g_Exempt[MAXPLAYERS + 1][MAXPLAYERS + 1]
-	, g_bClientJustJoined[MAXPLAYERS + 1] = { false, ... };
+	, g_Exempt[MAXPLAYERS + 1][MAXPLAYERS + 1];
 
 int
 	g_SpecialMutes[MAXPLAYERS + 1]
@@ -317,8 +316,6 @@ public Action OnClientJoinCheck(Handle timer, int userid)
 	char SteamID[32];	
 	if(!GetClientAuthId(client, AuthId_Steam2, SteamID, sizeof(SteamID)))
 		return Plugin_Stop;
-
-	g_bClientJustJoined[client] = true;
 	
 	Transaction T_ClientJoin = SQL_CreateTransaction();	
 				
@@ -353,9 +350,9 @@ public void SQL_OnClientJoinSuccess(Database hDatabase, int userid, int iNumQuer
 		char SteamID[32];
 		SQL_FetchString(hResults[0], 0, SteamID, sizeof(SteamID));
 		int target = GetClientFromSteamID(SteamID);
-		if(target != -1)
+		if(target != -1 && !CheckCommandAccess(target, "sm_admin", ADMFLAG_GENERIC, true))
 		{
-			Ignore(client, target);
+			Ignore(client, target, true);
 		}
 	}
 	
@@ -364,9 +361,9 @@ public void SQL_OnClientJoinSuccess(Database hDatabase, int userid, int iNumQuer
 		char SteamID[32];
 		SQL_FetchString(hResults[1], 0, SteamID, sizeof(SteamID));
 		int target = GetClientFromSteamID(SteamID);
-		if(target != -1)
+		if(target != -1 && !CheckCommandAccess(target, "sm_admin", ADMFLAG_GENERIC, true))
 		{
-			Ignore(target, client);
+			Ignore(target, client, true);
 		}
 	}
 
@@ -374,10 +371,9 @@ public void SQL_OnClientJoinSuccess(Database hDatabase, int userid, int iNumQuer
 	{
 		char sGroup[32];
 		SQL_FetchString(hResults[2], 0, sGroup, sizeof(sGroup));
-		MuteSpecial(client, sGroup);
+		MuteSpecial(client, sGroup, true);
 	}
 
-	g_bClientJustJoined[client] = false;
 	UpdateIgnored();
 }
 
@@ -615,8 +611,7 @@ public void OnClientCookiesCached(int client)
         g_iClientSmMode[client] = StringToInt(sValue);
     else
         g_iClientSmMode[client] = SmMode_Alert; 
-        
-    g_bClientJustJoined[client] = true;
+
     if(StrEqual(sBool, "1"))
     {
         for(int i = 1; i <= MaxClients; i++)
@@ -626,12 +621,11 @@ public void OnClientCookiesCached(int client)
 
 		if(IsClientSourceTV(i))
 		{
-		    Ignore(client, i);
+		    Ignore(client, i, true);
 		    break;
 		}
         }
     }
-    g_bClientJustJoined[client] = false;
 }
 
 public void OnClientDisconnect(int client)
@@ -659,8 +653,7 @@ public void OnClientDisconnect(int client)
 	}
 
 	UpdateIgnored();
-	g_bClientJustJoined[client] = false;
-	g_iClientSmMode[client] = 2;
+	g_iClientSmMode[client] = SmMode_Alert;
 }
 
 public void Event_Round(Handle event, const char[] name, bool dontBroadcast)
@@ -883,7 +876,7 @@ void FormatSpecialMutes(int SpecialMute, char[] aBuf, int BufLen)
 		aBuf[strlen(aBuf) - 2] = 0;
 }
 
-bool MuteSpecial(int client, char[] Argument)
+bool MuteSpecial(int client, char[] Argument, bool clientJustJoined = false)
 {
 	bool RetValue = false;
 	int SpecialMute = GetSpecialMutesFlags(Argument);
@@ -908,7 +901,7 @@ bool MuteSpecial(int client, char[] Argument)
 	        return true;
 	    }
 		
-	    if(g_iClientSmMode[client] != SmMode_Alert || g_bClientJustJoined[client])
+	    if(g_iClientSmMode[client] != SmMode_Alert || clientJustJoined)
 	    {
 		    if(SpecialMute & MUTE_ALL || g_SpecialMutes[client] & MUTE_ALL)
 		    {
@@ -923,7 +916,7 @@ bool MuteSpecial(int client, char[] Argument)
 	    FormatSpecialMutes(SpecialMute, aBuf, sizeof(aBuf));
 	    UpdateSpecialMutesThisClient(client);
 
-	    if(g_bClientJustJoined[client])
+	    if(clientJustJoined)
 	    	return true;
 
 	    switch(g_iClientSmMode[client])
@@ -973,16 +966,13 @@ bool MuteSpecial(int client, char[] Argument)
 	        }
 	        case SmMode_Alert:
 	        {
-	            if(!g_bClientJustJoined[client])
-	            {
-	            	DisplayAlertMenu(client, false, -1, Argument);
-	            }
+			    DisplayAlertMenu(client, false, -1, Argument);
         	}
 	    }
 
 	    RetValue = true;
 	}
-    return RetValue;
+	return RetValue;
 }
 
 bool UnMuteSpecial(int client, char[] Argument)
@@ -1046,13 +1036,17 @@ bool UnMuteSpecial(int client, char[] Argument)
 	return false;
 }
 
-void Ignore(int client, int target)
+void Ignore(int client, int target, bool clientJustJoined = false)
 {
 	if(client < 1 || target < 1 || client > MaxClients || target > MaxClients)
 		return;
 
-	if(!g_bClientJustJoined[client])
+	int oldSmMode = g_iClientSmMode[client];
+	if(!clientJustJoined)
 	{
+		if(g_iClientSmMode[client] == SmMode_Perma && CheckCommandAccess(target, "sm_admin", ADMFLAG_GENERIC, true))
+			g_iClientSmMode[client] = SmMode_Temp;
+
 		switch(g_iClientSmMode[client])
 		{
 			case SmMode_Temp:
@@ -1077,15 +1071,13 @@ void Ignore(int client, int target)
 			}
 			case SmMode_Alert:
 			{
-				if(!g_bClientJustJoined[client])
-				{
-					DisplayAlertMenu(client, true, target);
-					return;
-				}
+				DisplayAlertMenu(client, true, target);
+				return;
 			}
 		}
+		g_iClientSmMode[client] = oldSmMode;
 	}
-	else if(g_bClientJustJoined[client])
+	else
 	{
 		g_bClientSavedTargets[client][target] = true;
 	}
