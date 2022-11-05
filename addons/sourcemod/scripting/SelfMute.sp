@@ -5,13 +5,13 @@
 #include <sdktools>
 #include <adminmenu>
 #include <cstrike>
+#include <clientprefs>
+
+#include <multicolors>
 #include <ccc>
+#include <AdvancedTargeting>
 #tryinclude <zombiereloaded>
 #tryinclude <voiceannounce_ex>
-#include <AdvancedTargeting>
-#include <multicolors>
-#include <clientprefs>
-#include <SelfMute>
 
 #define PLUGIN_PREFIX "{green}[Self-Mute]{default} "
 #define SmMode_Temp 0
@@ -70,7 +70,7 @@ public Plugin myinfo =
 	name 			= "SelfMute",
 	author 			= "BotoX, Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "3.0",
+	version 		= "3.0.0",
 	url 			= ""
 };
 
