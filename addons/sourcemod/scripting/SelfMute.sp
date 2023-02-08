@@ -9,6 +9,7 @@
 
 #include <multicolors>
 #include <ccc>
+#include <SelfMute>
 #include <AdvancedTargeting>
 #tryinclude <zombiereloaded>
 #tryinclude <voiceannounce_ex>
@@ -70,7 +71,7 @@ public Plugin myinfo =
 	name 			= "SelfMute",
 	author 			= "BotoX, Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "3.0.0",
+	version 		= "3.0.1",
 	url 			= ""
 };
 
@@ -127,8 +128,7 @@ public void OnPluginStart()
             if(AreClientCookiesCached(i))
                 OnClientCookiesCached(i);
 
-            if(IsClientAuthorized(i))
-                OnClientPostAdminCheck(i);
+            OnClientPostAdminCheck(i);
         }
 	}
 }
@@ -156,7 +156,7 @@ public int Native_GetSelfMute(Handle plugin, int params)
 	return g_bClientTargets[client][target];
 }
 
-//Database setup
+/* Database Setup */
 
 stock void ConnectToDB()
 {
@@ -167,9 +167,6 @@ public void DB_OnConnect(Database db, const char[] sError, any data)
 {
 	if(db == null || sError[0])
 	{
-		if (g_hCVar_Debug.IntValue >= 1)
-			LogError("[Self-Mute] Couldn't connect to database `SelfMute`, retrying in 10s error: %s", sError);
-
 		/* Failure happen. Do retry with delay */
 		CreateTimer(RetryTime, DB_RetryConnection);
 
@@ -177,6 +174,9 @@ public void DB_OnConnect(Database db, const char[] sError, any data)
 			RetryTime = 15.0;
 		else if (RetryTime > 60.0)
 			RetryTime = 60.0;
+		if (g_hCVar_Debug.IntValue >= 1)
+			LogError("[Self-Mute] Couldn't connect to database `SelfMute`, retrying in %d seconds. \nError: %s", RetryTime, sError);
+
 		return;
 	}
 
