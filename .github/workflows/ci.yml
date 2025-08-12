@@ -9,9 +9,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-24.04]
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - name: Build sourcemod plugin
@@ -86,3 +86,4 @@ jobs:
           tag: ${{ env.RELEASE_VERSION }}
           file_glob: true
           overwrite: true
+
