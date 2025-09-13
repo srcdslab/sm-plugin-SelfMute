@@ -1,16 +1,42 @@
-// *************************************************************************
-// This is the include file for SelfMute
-//
-// To check that SelfMute is installed and running, verify that the "SelfMute" library exists
-//
-// *************************************************************************
-
-#if defined _SelfMute_included_
-  #endinput
+#if defined _SelfMute_V2_included
+ #endinput
 #endif
-#define _SelfMute_included_
+#define _SelfMute_V2_included
 
-public SharedPlugin __pl_SelfMute = 
+/**
+* Check if client has target selfmuted in text chat
+
+* @param client        Client Index
+* @param target        Target Index
+
+
+* @return            True if selfmute was placed, False otherwise
+**/
+native bool SelfMute_GetTextSelfMute(int client, int target);
+
+/**
+* Check if client has target selfmuted in voice chat
+
+* @param client        Client Index
+* @param target        Target Index
+
+
+* @return            True if selfmute was placed, False otherwise
+**/
+native bool SelfMute_GetVoiceSelfMute(int client, int target);
+
+/**
+* Check if client has target selfmuted in voice chat and text chat
+
+* @param client        Client Index
+* @param target        Target Index
+
+
+* @return            True if selfmute was placed, False otherwise
+**/
+native bool SelfMute_GetSelfMute(int client, int target);
+
+public SharedPlugin __pl_SelfMuteV2 =
 {
     name = "SelfMute",
     file = "SelfMute.smx",
@@ -22,15 +48,10 @@ public SharedPlugin __pl_SelfMute =
 }
 
 #if !defined REQUIRE_PLUGIN
-public void __pl_SelfMute_SetNTVOptional()
+public void __pl_SelfMuteV2_SetNTVOptional()
 {
+    MarkNativeAsOptional("SelfMute_GetTextSelfMute");
+    MarkNativeAsOptional("SelfMute_GetVoiceSelfMute");
     MarkNativeAsOptional("SelfMute_GetSelfMute");
 }
 #endif
-
-/*********************************************************
- * Check if client has that target selfmuted
- * 
- * @return     true if client has that target selfmuted, false otherwise
- *********************************************************/
-native bool SelfMute_GetSelfMute(int client, int target);
