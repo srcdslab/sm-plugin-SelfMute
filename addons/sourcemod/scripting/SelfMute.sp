@@ -1678,8 +1678,6 @@ public void OnClientDisconnect(int client) {
 		g_bClientGroupVoice[client][i] = false;
 		g_bClientGroupPerma[client][i] = false;
 	}
-
-	UpdateIgnored();
 }
 
 public void CookieMenu_Handler(int client, CookieMenuAction action, any info, char[] buffer, int maxlen)
@@ -1693,24 +1691,21 @@ public void CookieMenu_Handler(int client, CookieMenuAction action, any info, ch
 	}
 }
 
-void UpdateIgnored() {
-	if (g_Plugin_ccc)
-		CCC_UpdateIgnoredArray(g_Ignored);
-}
-
 bool GetIgnored(int client, int target) {
 	return g_Ignored[(client * (MAXPLAYERS + 1) + target)];
 }
 
 void SetIgnored(int client, int target, bool ignored) {
 	g_Ignored[(client * (MAXPLAYERS + 1) + target)] = ignored;
+	if (g_Plugin_ccc) {
+		CCC_SetIgnored(client, target, ignored);
+	}
 }
 
 void ApplySelfMute(int client, int target, MuteType muteType) {
 	switch(muteType) {
 		case MuteType_Text: {
 			SetIgnored(client, target, true);
-			UpdateIgnored();
 			g_bClientText[client][target] = true;
 		}
 
@@ -1721,7 +1716,6 @@ void ApplySelfMute(int client, int target, MuteType muteType) {
 
 		case MuteType_All: {
 			SetIgnored(client, target, true);
-			UpdateIgnored();
 			SetListenOverride(client, target, Listen_No);
 
 			g_bClientText[client][target] = true;
@@ -1755,7 +1749,6 @@ void ApplySelfMuteGroup(int client, const char[] groupFilterC, MuteType muteType
 void ApplySelfUnMute(int client, int target) {
 	if (g_bClientText[client][target]) {
 		SetIgnored(client, target, false);
-		UpdateIgnored();
 		g_bClientText[client][target] = false;
 	}
 
@@ -1777,8 +1770,6 @@ void ApplySelfUnMuteGroup(int client, GroupFilter groupFilter) {
 
 			SetIgnored(client, i, false);
 		}
-
-		UpdateIgnored();
 	}
 
 	if (g_bClientGroupVoice[client][target]) {
@@ -2064,7 +2055,6 @@ GroupFilter GetGroupFilterByChar(const char[] groupFilterC) {
 }
 
 void SelfUnMutePreviousGroup(int client) {
-	bool shouldUpdateIgnored;
 	for (int i = 1; i <= MaxClients; i++) {
 		if (i == client) {
 			continue;
@@ -2075,7 +2065,6 @@ void SelfUnMutePreviousGroup(int client) {
 		}
 
 		if (GetIgnored(client, i) && !g_bClientText[client][i]) {
-			shouldUpdateIgnored = true;
 			SetIgnored(client, i, false);
 		}
 
@@ -2083,14 +2072,9 @@ void SelfUnMutePreviousGroup(int client) {
 			SetListenOverride(client, i, Listen_Yes);
 		}
 	}
-
-	if (shouldUpdateIgnored) {
-		UpdateIgnored();
-	}
 }
 
 void UpdateSelfMuteGroup(int client, GroupFilter groupFilter) {
-	bool shouldUpdateIgnored;
 	for (int i = 1; i <= MaxClients; i++) {
 		if (i == client) {
 			continue;
@@ -2105,17 +2089,12 @@ void UpdateSelfMuteGroup(int client, GroupFilter groupFilter) {
 		}
 
 		if (g_bClientGroupText[client][view_as<int>(groupFilter)]) {
-			shouldUpdateIgnored = true;
 			SetIgnored(client, i, true);
 		}
 
 		if (g_bClientGroupVoice[client][view_as<int>(groupFilter)]) {
 			SetListenOverride(client, i, Listen_No);
 		}
-	}
-
-	if (shouldUpdateIgnored) {
-		UpdateIgnored();
 	}
 }
 
@@ -2229,7 +2208,7 @@ Action OnRadioCommand(int client, const char[] command, int argc) {
 	}
 
 	g_MsgClient = client;
-	g_fLastMessageTime = GetGameTime();
+	g_fLastMessageTime = currentTime;
 
 	return Plugin_Continue;
 }
