@@ -114,21 +114,21 @@ char g_sGroupsFilters[][] = {
 
 enum struct PlayerData {
 	char name[32];
-	char steamID[20];
+	int steamID;
 	MuteType muteType;
 	MuteDuration muteDuration;
 	bool addedToDB;
 
 	void Reset() {
 		this.Setup(
-			"", "", view_as<MuteType>(g_cvDefaultMuteTypeSettings.IntValue),
+			"", 0, view_as<MuteType>(g_cvDefaultMuteTypeSettings.IntValue),
 					view_as<MuteDuration>(g_cvDefaultMuteDurationSettings.IntValue)
 		);
 	}
 
-	void Setup(char[] nameEx, char[] steamIDEx, MuteType muteTypeEx, MuteDuration muteDurationEx) {
+	void Setup(char[] nameEx, int steamIDEx, MuteType muteTypeEx, MuteDuration muteDurationEx) {
 		strcopy(this.name, sizeof(PlayerData::name), nameEx);
-		strcopy(this.steamID, sizeof(PlayerData::steamID), steamIDEx);
+		this.steamID = steamIDEx;
 		this.muteType = muteTypeEx;
 		this.muteDuration = muteDurationEx;
 		this.addedToDB = false;
@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.1.0",
+	version 		= "2.1.1",
 	url 			= ""
 };
 
@@ -1492,7 +1492,7 @@ public void OnClientConnected(int client) {
 		strcopy(clientName, sizeof(clientName), "Source TV");
 	}
 
-	g_PlayerData[client].Setup(clientName, "Console", MuteType_None, MuteDuration_Permanent); // whatever values but name and steamid are the important
+	g_PlayerData[client].Setup(clientName, 0, MuteType_None, MuteDuration_Permanent); // whatever values but name and steamid are the important
 }
 
 public void OnClientPostAdminCheck(int client) {
@@ -1506,9 +1506,6 @@ public void OnClientPostAdminCheck(int client) {
 		return;
 	}
 
-	char steamIDStr[20];
-	IntToString(steamID, steamIDStr, sizeof(steamIDStr));
-
 	char clientName[MAX_NAME_LENGTH];
 	if (!GetClientName(client, clientName, sizeof(clientName))) {
 		return;
@@ -1517,7 +1514,7 @@ public void OnClientPostAdminCheck(int client) {
 	MuteType muteType = view_as<MuteType>(g_cvDefaultMuteTypeSettings.IntValue);
 	MuteDuration muteDuration = view_as<MuteDuration>(g_cvDefaultMuteDurationSettings.IntValue);
 
-	g_PlayerData[client].Setup(clientName, steamIDStr, muteType, muteDuration);
+	g_PlayerData[client].Setup(clientName, steamID, muteType, muteDuration);
 
 	if (g_hDB == null) {
 		return;
@@ -1539,7 +1536,7 @@ void DB_OnGetClientData(Database db, DBResultSet results, const char[] error, in
 		return;
 	}
 
-	int steamID = StringToInt(g_PlayerData[client].steamID);
+	int steamID = g_PlayerData[client].steamID;
 
 	if (results == null) {
 		return;
@@ -1606,7 +1603,6 @@ void DB_OnGetClientTargets(Database db, DBResultSet results, const char[] error,
 
 		if (!isGroup) {
 			int targetSteamID = results.FetchInt(1);
-			char steamIDStr[20];
 
 			// Special handling for SourceTV (SteamID = 0)
 			if (targetSteamID == 0) {
@@ -1621,9 +1617,7 @@ void DB_OnGetClientTargets(Database db, DBResultSet results, const char[] error,
 					}
 				}
 			} else {
-				IntToString(targetSteamID, steamIDStr, sizeof(steamIDStr));
-
-				int target = GetClientBySteamID(steamIDStr);
+				int target = GetClientBySteamID(targetSteamID);
 				if (target == -1) {
 					continue;
 				}
@@ -1801,19 +1795,14 @@ void DeleteMuteFromDatabase(int client, int target = -1, const char[] groupFilte
 		return;
 	}
 
-	int clientSteamID = StringToInt(g_PlayerData[client].steamID);
+	int clientSteamID = g_PlayerData[client].steamID;
 	if (!clientSteamID) {
 		return;
 	}
 
 	char query[256];
 	if (target != -1) {
-		int targetSteamID;
-		if (IsClientSourceTV(target)) {
-			targetSteamID = 0; // SourceTV
-		} else {
-			targetSteamID = StringToInt(g_PlayerData[target].steamID);
-		}
+		int targetSteamID = g_PlayerData[target].steamID;
 
 		FormatEx(query, sizeof(query), "DELETE FROM `clients_mute` WHERE `client_steamid`=%d AND `target_steamid`=%d",
 			clientSteamID, targetSteamID);
@@ -1866,18 +1855,12 @@ bool IsThisMutedPerma(int client, int target = -1, const char[] groupFilterC = "
 }
 
 void SaveSelfMuteClient(int client, int target) {
-	int clientSteamID = StringToInt(g_PlayerData[client].steamID);
-
-	int targetSteamID;
-	if (IsClientSourceTV(target)) {
-		targetSteamID = 0; // Use 0 for SourceTV
-	} else {
-		targetSteamID = StringToInt(g_PlayerData[target].steamID);
-	}
-
+	int clientSteamID = g_PlayerData[client].steamID;
 	if (!clientSteamID) {
 		return;
 	}
+
+	int targetSteamID = g_PlayerData[target].steamID;
 
 	char query[512];
 	if (!g_bSQLLite) {
@@ -1910,7 +1893,7 @@ void SaveSelfMuteGroup(int client, GroupFilter groupFilter) {
 		return;
 	}
 
-	int clientSteamID = StringToInt(g_PlayerData[client].steamID);
+	int clientSteamID = g_PlayerData[client].steamID;
 	if (!clientSteamID) {
 		return;
 	}
@@ -1950,7 +1933,7 @@ void DB_UpdateClientData(int client, int mode) {
 		return;
 	}
 
-	int steamID = StringToInt(g_PlayerData[client].steamID);
+	int steamID = g_PlayerData[client].steamID;
 	if (!steamID) {
 		return;
 	}
@@ -1987,7 +1970,7 @@ void DB_UpdateClientData(int client, int mode) {
 		return;
 	}
 
-	if (g_PlayerData[client].steamID[0]) {
+	if (g_PlayerData[client].steamID) {
 		/* Update client data in sql */
 		char query[256];
 		FormatEx(query, sizeof(query), "UPDATE `clients_data` SET `%s`=%d WHERE `client_steamid`=%d",
@@ -2175,13 +2158,13 @@ bool IsClientInGroup(int client, GroupFilter groupFilter) {
 	}
 }
 
-int GetClientBySteamID(const char[] steamID) {
+int GetClientBySteamID(int steamID) {
 	for (int i = 1; i <= MaxClients; i++) {
 		if (!IsClientInGame(i)) {
 			continue;
 		}
 
-		if (IsClientSourceTV(i) && strcmp("Console", steamID) == 0) {
+		if (IsClientSourceTV(i) && steamID == 0) {
 			return i;
 		}
 
@@ -2189,7 +2172,7 @@ int GetClientBySteamID(const char[] steamID) {
 			continue;
 		}
 
-		if (strcmp(g_PlayerData[i].steamID, steamID, false) == 0) {
+		if (g_PlayerData[i].steamID == steamID) {
 			return i;
 		}
 	}
