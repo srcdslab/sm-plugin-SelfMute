@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.1.1",
+	version 		= "2.2.0",
 	url 			= ""
 };
 
@@ -374,12 +374,13 @@ int Menu_ShowCookiesMuteDurationMenu(Menu menu, MenuAction action, int param1, i
 
 	return 1;
 }
+
 Action Command_CheckMutes(int client, int args) {
 	if (!client) {
 		return Plugin_Handled;
 	}
 
-	ShowSelfMuteTargetsMenu(client);
+	OpenSelfMuteMenu(client);
 	return Plugin_Handled;
 }
 
@@ -398,7 +399,7 @@ Action Command_SelfUnMuteAll(int client, int args) {
 			continue;
 		}
 
-		if (g_bClientText[client][i] || g_bClientVoice[client][i]) {
+		if (IsTargetMuted(client, i)) {
 			ApplySelfUnMute(client, i);
 		}
 	}
@@ -446,7 +447,7 @@ Action Command_SelfUnMute(int client, int args) {
 		return Plugin_Handled;
 	}
 
-	if (!g_bClientText[client][target] && !g_bClientVoice[client][target]) {
+	if (!IsTargetMuted(client, target)) {
 		CReplyToCommand(client, "You do not have this player self-muted.");
 		return Plugin_Handled;
 	}
@@ -926,7 +927,7 @@ void HandleGroupSelfMute(int client, const char[] groupFilterC, MuteType muteTyp
 		if (strcmp(groupFilterC, "@talking", false) == 0) {
 			bool found = false;
 			for (int i = 1; i <= MaxClients; i++) {
-				if (!IsClientInGame(i)) {
+				if (i == client || !IsClientInGame(i)) {
 					continue;
 				}
 
@@ -1741,15 +1742,11 @@ void ApplySelfMuteGroup(int client, const char[] groupFilterC, MuteType muteType
 }
 
 void ApplySelfUnMute(int client, int target) {
-	if (g_bClientText[client][target]) {
-		SetIgnored(client, target, false);
-		g_bClientText[client][target] = false;
-	}
+	SetIgnored(client, target, false);
+	g_bClientText[client][target] = false;
 
-	if (g_bClientVoice[client][target]) {
-		SetListenOverride(client, target, Listen_Yes);
-		g_bClientVoice[client][target] = false;
-	}
+	SetListenOverride(client, target, Listen_Yes);
+	g_bClientVoice[client][target] = false;
 
 	DeleteMuteFromDatabase(client, target);
 }
@@ -2178,6 +2175,13 @@ int GetClientBySteamID(int steamID) {
 	}
 
 	return -1;
+}
+
+bool IsTargetMuted(int client, int target) {
+	return g_bClientText[client][target]
+		|| g_bClientVoice[client][target]
+		|| GetIgnored(client, target)
+		|| GetListenOverride(client, target) == Listen_No;
 }
 
 /* Thanks to Botox Original Self-Mute plugin for the radio commands part */
