@@ -26,39 +26,6 @@
 
 #define PLUGIN_PREFIX "{green}[Self-Mute]{default}"
 
-/* Other plugins library checking variables */
-bool g_Plugin_ccc;
-bool g_Plugin_zombiereloaded;
-
-/* Late Load */
-bool g_bLate;
-
-/* CCC ignoring variable */
-bool g_Ignored[(MAXPLAYERS + 1) * (MAXPLAYERS + 1)];
-
-/* Client Boolean variables */
-bool g_bClientText[MAXPLAYERS + 1][MAXPLAYERS + 1];
-bool g_bClientVoice[MAXPLAYERS + 1][MAXPLAYERS + 1];
-bool g_bClientGroupText[MAXPLAYERS + 1][view_as<int>(GROUP_MAX_NUM)];
-bool g_bClientGroupVoice[MAXPLAYERS + 1][view_as<int>(GROUP_MAX_NUM)];
-
-/* Permanent selfmute Boolean Variables */
-bool g_bClientTargetPerma[MAXPLAYERS + 1][MAXPLAYERS + 1];
-bool g_bClientGroupPerma[MAXPLAYERS + 1][view_as<int>(GROUP_MAX_NUM)];
-
-/* ProtoBuf bool */
-bool g_bIsProtoBuf = false;
-
-/* Sqlite bool */
-bool g_bSQLLite = false;
-
-/* ConVar List */
-ConVar g_cvDefaultMuteTypeSettings;
-ConVar g_cvDefaultMuteDurationSettings;
-
-/* Radio Last Message Float */
-float g_fLastMessageTime;
-
 /* Enums & Structs */
 enum MuteType {
 	MuteType_Voice = 0,
@@ -112,6 +79,39 @@ char g_sGroupsFilters[][] = {
 	"@steam"
 };
 
+/* Other plugins library checking variables */
+bool g_Plugin_ccc;
+bool g_Plugin_zombiereloaded;
+
+/* Late Load */
+bool g_bLate;
+
+/* CCC ignoring variable */
+bool g_Ignored[(MAXPLAYERS + 1) * (MAXPLAYERS + 1)];
+
+/* Client Boolean variables */
+bool g_bClientText[MAXPLAYERS + 1][MAXPLAYERS + 1];
+bool g_bClientVoice[MAXPLAYERS + 1][MAXPLAYERS + 1];
+bool g_bClientGroupText[MAXPLAYERS + 1][view_as<int>(GROUP_MAX_NUM)];
+bool g_bClientGroupVoice[MAXPLAYERS + 1][view_as<int>(GROUP_MAX_NUM)];
+
+/* Permanent selfmute Boolean Variables */
+bool g_bClientTargetPerma[MAXPLAYERS + 1][MAXPLAYERS + 1];
+bool g_bClientGroupPerma[MAXPLAYERS + 1][view_as<int>(GROUP_MAX_NUM)];
+
+/* ProtoBuf bool */
+bool g_bIsProtoBuf = false;
+
+/* Sqlite bool */
+bool g_bSQLLite = false;
+
+/* ConVar List */
+ConVar g_cvDefaultMuteTypeSettings;
+ConVar g_cvDefaultMuteDurationSettings;
+
+/* Radio Last Message Float */
+float g_fLastMessageTime;
+
 enum struct PlayerData {
 	char name[32];
 	int steamID;
@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.0",
+	version 		= "2.2.1",
 	url 			= ""
 };
 
