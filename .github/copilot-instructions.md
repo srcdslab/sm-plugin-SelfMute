@@ -6,9 +6,9 @@ This repository contains a SourcePawn plugin for SourceMod that enables players 
 ## Technical Environment
 - **Language**: SourcePawn (.sp files)
 - **Platform**: SourceMod 1.12+ (latest stable release required)
-- **Build System**: SourceKnight (configured via `sourceknight.yaml`)
+- **Build System**: Native GitHub Actions (configured via `.github/workflows/ci.yml`)
 - **Database**: MySQL or SQLite support for persistent muting
-- **Compiler**: SourcePawn compiler (spcomp) via SourceKnight
+- **Compiler**: SourcePawn compiler (spcomp), installed via `rumblefrog/setup-sp`
 
 ## Project Structure
 ```
@@ -17,7 +17,6 @@ addons/sourcemod/
 │   ├── SelfMute.sp              # Main plugin source
 │   └── include/
 │       └── SelfMute.inc         # Native API definitions
-sourceknight.yaml                # Build configuration
 .github/
 ├── workflows/ci.yml             # CI/CD pipeline
 └── dependabot.yml              # Dependency management
@@ -97,22 +96,21 @@ CREATE TABLE groups_mute (
 ## Build & Development Workflow
 
 ### Building
-```bash
-sourceknight build  # Builds using dependencies from sourceknight.yaml
-```
+Builds run via native GitHub Actions (`.github/workflows/ci.yml`): the SourcePawn compiler is
+installed with `rumblefrog/setup-sp` (SourceMod 1.12.x), include dependencies are cloned directly
+from their source repos, and `spcomp` compiles `SelfMute.sp` into `SelfMute.smx`.
 
 ### Dependencies
-Managed via `sourceknight.yaml`:
-- **sourcemod**: Core SourceMod framework
-- **multicolors**: Chat color formatting
-- **ccc**: Custom chat colors integration
-- **advancedtargeting**: Friend detection features
-- **zombiereloaded**: Zombie mod integration
+Cloned directly in CI from their GitHub repos:
+- **multicolors**: Chat color formatting (srcdslab/sm-plugin-MultiColors)
+- **ccc**: Custom chat colors integration (srcdslab/sm-plugin-CustomChatColors)
+- **advancedtargeting**: Friend detection features (srcdslab/sm-plugin-AdvancedTargeting)
+- **zombiereloaded**: Zombie mod integration (srcdslab/sm-plugin-zombiereloaded)
 
 ### CI/CD Pipeline
 - Automated builds on push/PR using GitHub Actions
-- Uses `maxime1907/action-sourceknight@v1`
-- Automatic releases on tags and main branch
+- Uses `rumblefrog/setup-sp` to install the SourcePawn compiler
+- Automatic releases on tags and master/main branch pushes (tagged `latest`)
 - Artifact generation for testing
 
 ## Development Best Practices
@@ -165,7 +163,6 @@ When modifying the plugin, test integration with:
 ## File Modification Guidelines
 - **SelfMute.sp**: Main plugin logic, database operations, commands, menus
 - **SelfMute.inc**: Native function definitions only - document all parameters and return values
-- **sourceknight.yaml**: Build dependencies and configuration
 - **CI/CD files**: Only modify if changing build process or adding new dependencies
 
 ## Debugging & Troubleshooting
