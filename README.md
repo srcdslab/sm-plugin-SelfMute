@@ -18,7 +18,7 @@ You need to have "SelfMuteV2" in your database.cfg
 - Fully asynchronous SQL operations
 
 ## Installation
-1. Download the latest release from GitHub or build using SourceKnight.
+1. Download the latest release from GitHub, or build it yourself via the GitHub Actions CI workflow (`.github/workflows/ci.yml`).
 2. Place `SelfMute.smx` in `addons/sourcemod/plugins/`.
 3. Place `SelfMute.inc` in `addons/sourcemod/scripting/include/` (for development).
 4. Configure database settings in `databases.cfg` (MySQL or SQLite).
