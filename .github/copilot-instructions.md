@@ -155,7 +155,7 @@ When modifying the plugin, test integration with:
 
 ## Common Pitfalls to Avoid
 - **Never use synchronous SQL queries** - all must be async
-- **Don't forget to escape SQL strings** - always use `g_hDB.Escape()`
+- **Don't forget to escape SQL strings** - build queries with `g_hDB.Format()`, which escapes `%s` string arguments directly, instead of manually calling `g_hDB.Escape()` into a separate buffer
 - **Avoid memory leaks** - use `delete` instead of `.Clear()`
 - **Don't hardcode values** - use configuration where appropriate
 - **Handle client disconnections** - always validate client indices
