@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.1",
+	version 		= "2.2.2",
 	url 			= ""
 };
 
@@ -1804,13 +1804,10 @@ void DeleteMuteFromDatabase(int client, int target = -1, const char[] groupFilte
 		FormatEx(query, sizeof(query), "DELETE FROM `clients_mute` WHERE `client_steamid`=%d AND `target_steamid`=%d",
 			clientSteamID, targetSteamID);
 	} else {
-		char escapedGroupFilter[42];
-		if (!g_hDB.Escape(groupFilterC, escapedGroupFilter, sizeof(escapedGroupFilter))) {
+		if (!g_hDB.Format(query, sizeof(query), "DELETE FROM `groups_mute` WHERE `client_steamid`=%d AND `group_filter`='%s'",
+			clientSteamID, groupFilterC)) {
 			return;
 		}
-
-		FormatEx(query, sizeof(query), "DELETE FROM `groups_mute` WHERE `client_steamid`=%d AND `group_filter`='%s'",
-			clientSteamID, escapedGroupFilter);
 	}
 
 	g_hDB.Query(DB_OnRemove, query, _, DBPrio_Normal);
@@ -1884,12 +1881,6 @@ void SaveSelfMuteClient(int client, int target) {
 }
 
 void SaveSelfMuteGroup(int client, GroupFilter groupFilter) {
-	char groupFilterC[20 * 2 + 1];
-
-	if (!g_hDB.Escape(g_sGroupsFilters[view_as<int>(groupFilter)], groupFilterC, sizeof(groupFilterC))) {
-		return;
-	}
-
 	int clientSteamID = g_PlayerData[client].steamID;
 	if (!clientSteamID) {
 		return;
@@ -1897,21 +1888,25 @@ void SaveSelfMuteGroup(int client, GroupFilter groupFilter) {
 
 	char query[512];
 	if (!g_bSQLLite) {
-		FormatEx(query, sizeof(query), "INSERT INTO `groups_mute` (`client_steamid`, `group_filter`,"
+		if (!g_hDB.Format(query, sizeof(query), "INSERT INTO `groups_mute` (`client_steamid`, `group_filter`,"
 										... "`text_chat`, `voice_chat`) VALUES (%d, '%s', %d, %d)"
 										... "ON DUPLICATE KEY UPDATE "
 										... "`text_chat`=VALUES(`text_chat`), `voice_chat`=VALUES(`voice_chat`)",
 										clientSteamID,
-										groupFilterC, view_as<int>(g_bClientGroupText[client][view_as<int>(groupFilter)]),
-										view_as<int>(g_bClientGroupVoice[client][view_as<int>(groupFilter)]));
+										g_sGroupsFilters[view_as<int>(groupFilter)], view_as<int>(g_bClientGroupText[client][view_as<int>(groupFilter)]),
+										view_as<int>(g_bClientGroupVoice[client][view_as<int>(groupFilter)]))) {
+			return;
+		}
 	} else {
-		FormatEx(query, sizeof(query), "INSERT INTO groups_mute (client_steamid, group_filter,"
+		if (!g_hDB.Format(query, sizeof(query), "INSERT INTO groups_mute (client_steamid, group_filter,"
 										... "text_chat, voice_chat) VALUES (%d, '%s', %d, %d)"
 										... " ON CONFLICT(client_steamid, group_filter) DO UPDATE SET "
 										... "text_chat=excluded.text_chat, voice_chat=excluded.voice_chat",
 										clientSteamID,
-										groupFilterC, view_as<int>(g_bClientGroupText[client][view_as<int>(groupFilter)]),
-										view_as<int>(g_bClientGroupVoice[client][view_as<int>(groupFilter)]));
+										g_sGroupsFilters[view_as<int>(groupFilter)], view_as<int>(g_bClientGroupText[client][view_as<int>(groupFilter)]),
+										view_as<int>(g_bClientGroupVoice[client][view_as<int>(groupFilter)]))) {
+			return;
+		}
 	}
 
 	g_hDB.Query(DB_OnInsertData, query, _, DBPrio_High);
