@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.2",
+	version 		= "2.2.3",
 	url 			= ""
 };
 
@@ -1371,7 +1371,7 @@ void DB_Tables() {
 	char driver[32];
 	g_hDB.Driver.GetIdentifier(driver, sizeof(driver));
 	if (strcmp(driver, "mysql", false) == 0) {
-		Transaction T_mysqlTables = SQL_CreateTransaction();
+		Transaction T_mysqlTables = new Transaction();
 
 		char query0[1024];
 		g_hDB.Format(query0, sizeof(query0), "CREATE TABLE IF NOT EXISTS `clients_data`("
@@ -1422,7 +1422,7 @@ void DB_Tables() {
 		g_hDB.Execute(T_mysqlTables, DB_mysqlTablesOnSuccess, DB_mysqlTablesOnError, _, DBPrio_High);
 	} else if (strcmp(driver, "sqlite", false) == 0) {
 		g_bSQLLite = true;
-		Transaction T_sqliteTables = SQL_CreateTransaction();
+		Transaction T_sqliteTables = new Transaction();
 
 		char query0[1024];
 		g_hDB.Format(query0, sizeof(query0), "CREATE TABLE IF NOT EXISTS `clients_data`("
