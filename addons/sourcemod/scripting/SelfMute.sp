@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.3",
+	version 		= "2.2.4",
 	url 			= ""
 };
 
@@ -1348,11 +1348,9 @@ public void DB_OnConnect(Database db, const char[] error, any data) {
 	PrintToServer("[Self-Mute] Successfully connected to database!");
 	g_hDB = db;
 	DB_Tables();
-	g_hDB.SetCharset("utf8");
 
-	if (g_bLate) {
-		LateLoadClients();
-	}
+	// Load the players that joined before the connection was up (late load, or a failed connect)
+	LateLoadClients();
 }
 
 public Action DB_RetryConnection(Handle timer)
@@ -1387,7 +1385,8 @@ void DB_Tables() {
 												... "`target_steamid` INT UNSIGNED NOT NULL,"
 												... "`text_chat` TINYINT NOT NULL,"
 												... "`voice_chat` TINYINT NOT NULL,"
-												... "PRIMARY KEY (`client_steamid`, `target_steamid`))");
+												... "PRIMARY KEY (`client_steamid`, `target_steamid`),"
+												... "INDEX `idx_clients_target_steamid` (`target_steamid`))");
 
 		T_mysqlTables.AddQuery(query0);
 
@@ -1397,25 +1396,6 @@ void DB_Tables() {
 												... "`text_chat` TINYINT NOT NULL,"
 												... "`voice_chat` TINYINT NOT NULL,"
 												... "PRIMARY KEY (`client_steamid`, `group_filter`))");
-
-		T_mysqlTables.AddQuery(query0);
-
-		g_hDB.Format(query0, sizeof(query0), "CREATE INDEX `idx_client_steamid` ON `clients_data` (`client_steamid`)");
-		T_mysqlTables.AddQuery(query0);
-
-		g_hDB.Format(query0, sizeof(query0), "CREATE INDEX `idx_clients_client_steamid` ON `clients_mute` (`client_steamid`)");
-		T_mysqlTables.AddQuery(query0);
-
-		g_hDB.Format(query0, sizeof(query0), "CREATE INDEX `idx_clients_target_steamid` ON `clients_mute` (`target_steamid`)");
-		T_mysqlTables.AddQuery(query0);
-
-		g_hDB.Format(query0, sizeof(query0), "CREATE INDEX `idx_groups_client_steamid` ON `groups_mute` (`client_steamid`)");
-		T_mysqlTables.AddQuery(query0);
-
-		g_hDB.Format(query0, sizeof(query0), "CREATE INDEX `idx_both1` ON `clients_mute` (`client_steamid`, `target_steamid`)");
-		T_mysqlTables.AddQuery(query0);
-
-		g_hDB.Format(query0, sizeof(query0), "CREATE INDEX `idx_both2` ON `groups_mute` (`client_steamid`, `group_filter`)");
 
 		T_mysqlTables.AddQuery(query0);
 
@@ -1461,7 +1441,18 @@ void DB_Tables() {
 // Transaction callbacks for tables:
 public void DB_mysqlTablesOnSuccess(Database database, any data, int queries, Handle[] results, any[] queryData) {
 	LogMessage("[Self-Mute] Database is now ready! (MYSQL)");
+
+	// Existing installs: add the index to a `clients_mute` table created without it (fails harmlessly if present).
+	// The other old indexes duplicated the primary keys (or their prefix), they are no longer created.
+	database.Query(DB_OnAddIndex, "ALTER TABLE `clients_mute` ADD INDEX `idx_clients_target_steamid` (`target_steamid`)", _, DBPrio_High);
 	return;
+}
+
+void DB_OnAddIndex(Database db, DBResultSet results, const char[] error, any data) {
+	// Error 1061 "Duplicate key name": the index already exists
+	if (error[0] && StrContains(error, "Duplicate key name", false) == -1) {
+		LogError("[Self-Mute] Couldn't add index `idx_clients_target_steamid`, error: %s", error);
+	}
 }
 
 public void DB_mysqlTablesOnError(Database database, any data, int queries, const char[] error, int failIndex, any[] queryData)
@@ -1797,6 +1788,10 @@ void DeleteMuteFromDatabase(int client, int target = -1, const char[] groupFilte
 		return;
 	}
 
+	if (g_hDB == null) {
+		return;
+	}
+
 	char query[256];
 	if (target != -1) {
 		int targetSteamID = g_PlayerData[target].steamID;
@@ -1849,6 +1844,10 @@ bool IsThisMutedPerma(int client, int target = -1, const char[] groupFilterC = "
 }
 
 void SaveSelfMuteClient(int client, int target) {
+	if (g_hDB == null) {
+		return;
+	}
+
 	int clientSteamID = g_PlayerData[client].steamID;
 	if (!clientSteamID) {
 		return;
@@ -1881,6 +1880,10 @@ void SaveSelfMuteClient(int client, int target) {
 }
 
 void SaveSelfMuteGroup(int client, GroupFilter groupFilter) {
+	if (g_hDB == null) {
+		return;
+	}
+
 	int clientSteamID = g_PlayerData[client].steamID;
 	if (!clientSteamID) {
 		return;
@@ -1953,12 +1956,8 @@ void DB_UpdateClientData(int client, int mode) {
 
 		g_hDB.Query(DB_OnAddData, query, _, DBPrio_Normal);
 
+		// Both columns are written by the INSERT, no UPDATE needed
 		g_PlayerData[client].addedToDB = true;
-
-		DataPack pack = new DataPack();
-		pack.WriteCell(GetClientUserId(client));
-		pack.WriteCell(mode);
-		CreateTimer(1.0, UpdateClientData_Timer, pack);
 		return;
 	}
 
@@ -1972,22 +1971,6 @@ void DB_UpdateClientData(int client, int mode) {
 
 		g_hDB.Query(DB_OnUpdateData, query, _, DBPrio_Normal);
 	}
-}
-
-Action UpdateClientData_Timer(Handle timer, DataPack pack) {
-	pack.Reset();
-
-	int client = GetClientOfUserId(pack.ReadCell());
-	if (!client) {
-		delete pack;
-		return Plugin_Stop;
-	}
-
-	int mode = pack.ReadCell();
-	DB_UpdateClientData(client, mode);
-
-	delete pack;
-	return Plugin_Stop;
 }
 
 void DB_OnAddData(Database db, DBResultSet results, const char[] error, any data) {
