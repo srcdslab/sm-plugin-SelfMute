@@ -57,17 +57,17 @@ enum GroupFilter {
 };
 
 char g_sGroupsNames[][] = {
-	"All Players",
+	"Group All Players",
 #if defined _zr_included
-	"Humans",
-	"Zombies",
+	"Group Humans",
+	"Group Zombies",
 #else
-	"Counter Terrorists",
-	"Terrorists",
+	"Group Counter Terrorists",
+	"Group Terrorists",
 #endif
-	"Spectators",
-	"No-Steam Players",
-	"Steam Players"
+	"Group Spectators",
+	"Group No-Steam Players",
+	"Group Steam Players"
 };
 
 char g_sGroupsFilters[][] = {
@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.4",
+	version 		= "2.2.5",
 	url 			= ""
 };
 
@@ -179,6 +179,7 @@ int Native_GetSelfMute(Handle plugin, int params) {
 public void OnPluginStart() {
 	/* Translation */
 	LoadTranslations("common.phrases");
+	LoadTranslations("SelfMute.phrases");
 
 	/* ConVars */
 	g_cvDefaultMuteTypeSettings 		= CreateConVar("sm_selfmute_default_mute_type", "3", "[0 = Self-Mute Voice only | 1 = Self-Mute Text Only | 2 = Self-Mute Both | 3 = Ask First]");
@@ -269,10 +270,13 @@ Action Command_SmCookies(int client, int args) {
 
 void ShowCookiesMenu(int client) {
 	Menu menu = new Menu(Menu_ShowCookies);
-	menu.SetTitle("[SM] Choose your prefered cookie");
+	menu.SetTitle("[SM] %T", "Menu Cookies Title", client);
 
-	menu.AddItem("0", "Mute Type, Text | Chat | Both | Ask First");
-	menu.AddItem("1", "Mute Duration, Temporary | Permanent | Ask First");
+	char buffer[256];
+	FormatEx(buffer, sizeof(buffer), "%T", "Menu Cookies Mute Type", client);
+	menu.AddItem("0", buffer);
+	FormatEx(buffer, sizeof(buffer), "%T", "Menu Cookies Mute Duration", client);
+	menu.AddItem("1", buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -300,12 +304,17 @@ int Menu_ShowCookies(Menu menu, MenuAction action, int param1, int param2) {
 
 void ShowCookiesMuteTypeMenu(int client) {
 	Menu menu = new Menu(Menu_ShowCookiesMuteTypeMenu);
-	menu.SetTitle("[SM] Choose your prefered cookie, how you want to self-mute a player or a group");
+	menu.SetTitle("[SM] %T", "Menu Cookies Sub Title", client);
 
-	menu.AddItem("0", "Voice Chat", g_PlayerData[client].muteType == view_as<MuteType>(0) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
-	menu.AddItem("1", "Text Chat", g_PlayerData[client].muteType == view_as<MuteType>(1) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
-	menu.AddItem("2", "Both Chats", g_PlayerData[client].muteType == view_as<MuteType>(2) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
-	menu.AddItem("3", "Ask First", g_PlayerData[client].muteType == view_as<MuteType>(3) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	char buffer[128];
+	FormatEx(buffer, sizeof(buffer), "%T", "Voice Chat", client);
+	menu.AddItem("0", buffer, g_PlayerData[client].muteType == view_as<MuteType>(0) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	FormatEx(buffer, sizeof(buffer), "%T", "Text Chat", client);
+	menu.AddItem("1", buffer, g_PlayerData[client].muteType == view_as<MuteType>(1) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	FormatEx(buffer, sizeof(buffer), "%T", "Both Chats", client);
+	menu.AddItem("2", buffer, g_PlayerData[client].muteType == view_as<MuteType>(2) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	FormatEx(buffer, sizeof(buffer), "%T", "Ask First", client);
+	menu.AddItem("3", buffer, g_PlayerData[client].muteType == view_as<MuteType>(3) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
 
 	menu.ExitBackButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -313,11 +322,15 @@ void ShowCookiesMuteTypeMenu(int client) {
 
 void ShowCookiesMuteDurationMenu(int client) {
 	Menu menu = new Menu(Menu_ShowCookiesMuteDurationMenu);
-	menu.SetTitle("[SM] Choose your prefered cookie, how you want to self-mute a player or a group");
+	menu.SetTitle("[SM] %T", "Menu Cookies Sub Title", client);
 
-	menu.AddItem("0", "Temporary", g_PlayerData[client].muteDuration == view_as<MuteDuration>(0) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
-	menu.AddItem("1", "Permanent", g_PlayerData[client].muteDuration == view_as<MuteDuration>(1) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
-	menu.AddItem("2", "Ask First", g_PlayerData[client].muteDuration == view_as<MuteDuration>(2) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	char buffer[128];
+	FormatEx(buffer, sizeof(buffer), "%T", "Temporary", client);
+	menu.AddItem("0", buffer, g_PlayerData[client].muteDuration == view_as<MuteDuration>(0) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	FormatEx(buffer, sizeof(buffer), "%T", "Permanent", client);
+	menu.AddItem("1", buffer, g_PlayerData[client].muteDuration == view_as<MuteDuration>(1) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+	FormatEx(buffer, sizeof(buffer), "%T", "Ask First", client);
+	menu.AddItem("2", buffer, g_PlayerData[client].muteDuration == view_as<MuteDuration>(2) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
 
 	menu.ExitBackButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -340,7 +353,7 @@ int Menu_ShowCookiesMuteTypeMenu(Menu menu, MenuAction action, int param1, int p
 			menu.GetItem(param2, option, sizeof(option));
 			MuteType muteType = view_as<MuteType>(StringToInt(option));
 			g_PlayerData[param1].muteType = muteType;
-			CPrintToChat(param1, "Cookie Saved!");
+			CPrintToChat(param1, "%t", "Cookie Saved");
 			ShowCookiesMuteTypeMenu(param1);
 			DB_UpdateClientData(param1, 0); // 0 = mute type
 		}
@@ -366,7 +379,7 @@ int Menu_ShowCookiesMuteDurationMenu(Menu menu, MenuAction action, int param1, i
 			menu.GetItem(param2, option, sizeof(option));
 			MuteDuration muteDuration = view_as<MuteDuration>(StringToInt(option));
 			g_PlayerData[param1].muteDuration = muteDuration;
-			CPrintToChat(param1, "Cookie Saved!");
+			CPrintToChat(param1, "%t", "Cookie Saved");
 			ShowCookiesMuteDurationMenu(param1);
 			DB_UpdateClientData(param1, 1); // 1 = mute duration
 		}
@@ -390,7 +403,7 @@ Action Command_SelfUnMuteAll(int client, int args) {
 	}
 
 	if (!IsClientAuthorized(client)) {
-		CReplyToCommand(client, "You need to be authorized to use this command. Please rejoin.");
+		CReplyToCommand(client, "%t", "Not Authorized");
 		return Plugin_Handled;
 	}
 
@@ -410,7 +423,7 @@ Action Command_SelfUnMuteAll(int client, int args) {
 		}
 	}
 
-	CReplyToCommand(client, "You have self-unmuted all clients/groups.");
+	CReplyToCommand(client, "%t", "Unmuted All");
 	return Plugin_Handled;
 }
 
@@ -420,7 +433,7 @@ Action Command_SelfUnMute(int client, int args) {
 	}
 
 	if (!IsClientAuthorized(client)) {
-		CReplyToCommand(client, "You need to be authorized to use this command. Please rejoin.");
+		CReplyToCommand(client, "%t", "Not Authorized");
 		return Plugin_Handled;
 	}
 
@@ -443,17 +456,17 @@ Action Command_SelfUnMute(int client, int args) {
 	}
 
 	if (target == client) {
-		CReplyToCommand(client, "Silly, you cannot un-mute yourself!");
+		CReplyToCommand(client, "%t", "Cannot Unmute Self");
 		return Plugin_Handled;
 	}
 
 	if (!IsTargetMuted(client, target)) {
-		CReplyToCommand(client, "You do not have this player self-muted.");
+		CReplyToCommand(client, "%t", "Player Not Muted");
 		return Plugin_Handled;
 	}
 
 	if (IsFakeClient(target) && !IsClientSourceTV(target)) {
-		CReplyToCommand(client, "You cannot target a bot.");
+		CReplyToCommand(client, "%t", "Cannot target bot");
 		return Plugin_Handled;
 	}
 
@@ -467,13 +480,13 @@ Action Command_PermaSelfMute(int client, int args) {
 	}
 
 	if (!IsClientAuthorized(client)) {
-		CReplyToCommand(client, "You need to be authorized to use this command. Please rejoin.");
+		CReplyToCommand(client, "%t", "Not Authorized");
 		return Plugin_Handled;
 	}
 
 	if (!GetCmdArgs()) {
 		ShowSelfMuteTargetsMenu(client);
-		CReplyToCommand(client, "Usage: !psm <playername | @group>");
+		CReplyToCommand(client, "%t", "Usage PSM");
 		return Plugin_Handled;
 	}
 
@@ -491,12 +504,12 @@ Action Command_PermaSelfMute(int client, int args) {
 	}
 
 	if (target == client) {
-		CReplyToCommand(client, "Silly, you cannot mute yourself!");
+		CReplyToCommand(client, "%t", "Cannot Mute Self");
 		return Plugin_Handled;
 	}
 
 	if (IsFakeClient(target) && !IsClientSourceTV(target)) {
-		CReplyToCommand(client, "You cannot target a bot.");
+		CReplyToCommand(client, "%t", "Cannot target bot");
 		return Plugin_Handled;
 	}
 
@@ -510,13 +523,13 @@ Action Command_PermaSelfUnMute(int client, int args) {
 	}
 
 	if (!IsClientAuthorized(client)) {
-		CReplyToCommand(client, "You need to be authorized to use this command. Please rejoin.");
+		CReplyToCommand(client, "%t", "Not Authorized");
 		return Plugin_Handled;
 	}
 
 	if (!GetCmdArgs()) {
 		OpenSelfMuteMenu(client);
-		CReplyToCommand(client, "Usage: !psu <playername|@group>");
+		CReplyToCommand(client, "%t", "Usage PSU");
 		return Plugin_Handled;
 	}
 
@@ -534,17 +547,17 @@ Action Command_PermaSelfUnMute(int client, int args) {
 	}
 
 	if (target == client) {
-		CReplyToCommand(client, "Silly, you cannot un-mute yourself!");
+		CReplyToCommand(client, "%t", "Cannot Unmute Self");
 		return Plugin_Handled;
 	}
 
 	if (!g_bClientText[client][target] && !g_bClientVoice[client][target]) {
-		CReplyToCommand(client, "You do not have this player permanently self-muted.");
+		CReplyToCommand(client, "%t", "Player Not Perma Muted");
 		return Plugin_Handled;
 	}
 
 	if (!g_bClientTargetPerma[client][target]) {
-		CReplyToCommand(client, "You do not have this player permanently self-muted. Use !su to unmute temporary mutes.");
+		CReplyToCommand(client, "%t", "Player Not Perma Muted Use SU");
 		return Plugin_Handled;
 	}
 
@@ -556,7 +569,7 @@ Action Command_PermaSelfUnMute(int client, int args) {
 void HandleSelfUnMute(int client, int target) {
 	ApplySelfUnMute(client, target);
 
-	CPrintToChat(client, "You have {green}self-unmuted {olive}%N", target);
+	CPrintToChat(client, "%t", "Player Unmuted", target);
 
 	if (IsClientAdmin(target)) {
 		LogAction(client, target, "%L Removed SelfMute on admin. %L", client, target);
@@ -565,10 +578,13 @@ void HandleSelfUnMute(int client, int target) {
 
 void OpenSelfMuteMenu(int client) {
 	Menu menu = new Menu(Menu_SelfMuteList);
-	menu.SetTitle("[SM] Your self-muted Targets list");
+	menu.SetTitle("[SM] %T", "Menu Muted List Title", client);
 
-	menu.AddItem("0", "Players self-mute List");
-	menu.AddItem("1", "Groups self-mute List");
+	char buffer[128];
+	FormatEx(buffer, sizeof(buffer), "%T", "Menu Players List", client);
+	menu.AddItem("0", buffer);
+	FormatEx(buffer, sizeof(buffer), "%T", "Menu Groups List", client);
+	menu.AddItem("1", buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -593,8 +609,8 @@ int Menu_SelfMuteList(Menu menu, MenuAction action, int param1, int param2) {
 void ShowTargetsMenu(int client, MuteTarget muteTarget) {
 	Menu menu = new Menu(Menu_ShowTargets);
 
-	char title[50];
-	Format(title, sizeof(title), "%s - self-mute List | X = Muted", (muteTarget == MuteTarget_Client) ? "Players" : "Groups");
+	char title[128];
+	Format(title, sizeof(title), "%T", (muteTarget == MuteTarget_Client) ? "Menu Players Muted Title" : "Menu Groups Muted Title", client);
 	menu.SetTitle(title);
 
 	bool found = false;
@@ -615,18 +631,18 @@ void ShowTargetsMenu(int client, MuteTarget muteTarget) {
 
 					char itemInfo[12];
 					FormatEx(itemInfo, sizeof(itemInfo), "0|%d", userid);
-					char itemText[128];
+					char itemText[256];
 
 					MuteType checkMuteType = GetMuteType(g_bClientText[client][i], g_bClientVoice[client][i]);
 
-					FormatEx(itemText, sizeof(itemText), "(#%d) %s: Voice[%s] Text[%s] - %s",
+					FormatEx(itemText, sizeof(itemText), "(#%d) %s: %T",
 														userid,
 														g_PlayerData[i].name,
+														perma ? "Menu Mute Status Saved" : "Menu Mute Status Not Saved", client,
 														(checkMuteType == MuteType_All || checkMuteType == MuteType_Voice)
 														? "X" : "",
 														(checkMuteType == MuteType_All || checkMuteType == MuteType_Text)
-														? "X" : "",
-														perma ? "Saved" : "Not Saved");
+														? "X" : "");
 					menu.AddItem(itemInfo, itemText);
 					found = true;
 				}
@@ -641,16 +657,16 @@ void ShowTargetsMenu(int client, MuteTarget muteTarget) {
 					char itemInfo[22];
 					FormatEx(itemInfo, sizeof(itemInfo), "1|%s", g_sGroupsFilters[i]);
 
-					char itemText[128];
+					char itemText[256];
 					MuteType checkMuteType = GetMuteType(g_bClientGroupText[client][i], g_bClientGroupVoice[client][i]);
 
-					FormatEx(itemText, sizeof(itemText), "%s: Voice[%s] Text[%s] - %s",
-														g_sGroupsNames[i],
+					FormatEx(itemText, sizeof(itemText), "%T: %T",
+														g_sGroupsNames[i], client,
+														perma ? "Menu Mute Status Saved" : "Menu Mute Status Not Saved", client,
 														(checkMuteType == MuteType_All || checkMuteType == MuteType_Voice)
 														? "X" : "",
 														(checkMuteType == MuteType_All || checkMuteType == MuteType_Text)
-														? "X" : "",
-														perma ? "Saved" : "Not Saved");
+														? "X" : "");
 					menu.AddItem(itemInfo, itemText);
 					found = true;
 				}
@@ -659,7 +675,9 @@ void ShowTargetsMenu(int client, MuteTarget muteTarget) {
 	}
 
 	if (!found) {
-		menu.AddItem(NULL_STRING, "No result was found!", ITEMDRAW_DISABLED);
+		char buffer[128];
+		FormatEx(buffer, sizeof(buffer), "%T", "No Result", client);
+		menu.AddItem(NULL_STRING, buffer, ITEMDRAW_DISABLED);
 	}
 
 	menu.ExitBackButton = true;
@@ -689,7 +707,7 @@ int Menu_ShowTargets(Menu menu, MenuAction action, int param1, int param2) {
 			if (muteTarget == MuteTarget_Client) {
 				int target = GetClientOfUserId(StringToInt(options[1]));
 				if (!target) {
-					CPrintToChat(param1, "Player is no longer available");
+					CPrintToChat(param1, "%t", "Player no longer available");
 					return 1;
 				}
 
@@ -712,7 +730,7 @@ Action Command_SelfMute(int client, int args) {
 	}
 
 	if (!IsClientAuthorized(client)) {
-		CReplyToCommand(client, "You need to be authorized to use this command. Please rejoin.");
+		CReplyToCommand(client, "%t", "Not Authorized");
 		return Plugin_Handled;
 	}
 
@@ -735,12 +753,12 @@ Action Command_SelfMute(int client, int args) {
 	}
 
 	if (target == client) {
-		CReplyToCommand(client, "Silly, you cannot mute yourself!");
+		CReplyToCommand(client, "%t", "Cannot Mute Self");
 		return Plugin_Handled;
 	}
 
 	if (IsFakeClient(target) && !IsClientSourceTV(target)) {
-		CReplyToCommand(client, "You cannot target a bot.");
+		CReplyToCommand(client, "%t", "Cannot target bot");
 		return Plugin_Handled;
 	}
 
@@ -750,10 +768,13 @@ Action Command_SelfMute(int client, int args) {
 
 void ShowSelfMuteTargetsMenu(int client) {
 	Menu menu = new Menu(Menu_ShowSelfMuteTargets);
-	menu.SetTitle("[SM] Choose who you want to self-mute");
+	menu.SetTitle("[SM] %T", "Menu Choose Target Title", client);
 
-	menu.AddItem("0", "Players self-mute List");
-	menu.AddItem("1", "Groups self-mute List");
+	char buffer[128];
+	FormatEx(buffer, sizeof(buffer), "%T", "Menu Players List", client);
+	menu.AddItem("0", buffer);
+	FormatEx(buffer, sizeof(buffer), "%T", "Menu Groups List", client);
+	menu.AddItem("1", buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -780,8 +801,8 @@ int Menu_ShowSelfMuteTargets(Menu menu, MenuAction action, int param1, int param
 void ShowSelfMuteSpecificTargets(int client, MuteTarget muteTarget) {
 	Menu menu = new Menu(Menu_ShowSelfMuteSpecificTargets);
 
-	char title[75];
-	FormatEx(title, sizeof(title), "[SM] %s to self-mute [TEXT CHAT] [VOICE CHAT]", muteTarget == MuteTarget_Client ? "Players" : "Groups");
+	char title[256];
+	FormatEx(title, sizeof(title), "[SM] %T", muteTarget == MuteTarget_Client ? "Menu Players To Mute Title" : "Menu Groups To Mute Title", client);
 	menu.SetTitle(title);
 
 	switch(muteTarget) {
@@ -822,7 +843,7 @@ void ShowSelfMuteSpecificTargets(int client, MuteTarget muteTarget) {
 				FormatEx(itemInfo, sizeof(itemInfo), "1|%s", g_sGroupsFilters[i]);
 
 				char itemText[128];
-				FormatEx(itemText, sizeof(itemText), "%s - [%s] [%s]", g_sGroupsNames[i], g_bClientGroupText[client][i] ? "X" : "",
+				FormatEx(itemText, sizeof(itemText), "%T - [%s] [%s]", g_sGroupsNames[i], client, g_bClientGroupText[client][i] ? "X" : "",
 														g_bClientGroupVoice[client][i] ? "X" : "");
 
 				menu.AddItem(itemInfo, itemText, (g_bClientGroupText[client][i] && g_bClientGroupVoice[client][i]) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
@@ -857,7 +878,7 @@ int Menu_ShowSelfMuteSpecificTargets(Menu menu, MenuAction action, int param1, i
 			if (muteTarget == MuteTarget_Client) {
 				int target = GetClientOfUserId(StringToInt(options[1]));
 				if (!target) {
-					CPrintToChat(param1, "Player is no longer available");
+					CPrintToChat(param1, "%t", "Player no longer available");
 					return 1;
 				}
 
@@ -867,7 +888,7 @@ int Menu_ShowSelfMuteSpecificTargets(Menu menu, MenuAction action, int param1, i
 				}
 
 				if (muteType == g_PlayerData[param1].muteType) {
-					CPrintToChat(param1, "You have already self-muted this player. If you want to self-mute another type of chat please change your settings in {olive}!smcookies");
+					CPrintToChat(param1, "%t", "Player Already Muted Change Settings");
 					ShowSelfMuteSpecificTargets(param1, muteTarget);
 					return 1;
 				}
@@ -882,7 +903,7 @@ int Menu_ShowSelfMuteSpecificTargets(Menu menu, MenuAction action, int param1, i
 				}
 
 				if (muteType == g_PlayerData[param1].muteType) {
-					CPrintToChat(param1, "You have already self-muted this group. If you want to self-mute another type of chat please change your settings in {olive}!smcookies");
+					CPrintToChat(param1, "%t", "Group Already Muted Change Settings");
 					ShowSelfMuteSpecificTargets(param1, muteTarget);
 					return 1;
 				}
@@ -909,17 +930,20 @@ void HandleGroupSelfUnMute(int client, const char[] groupFilterC) {
 	}
 
 	if (groupFilter == GROUP_MAX_NUM) {
-		CPrintToChat(client, "Cannot find the specified group.");
+		CPrintToChat(client, "%t", "Group Not Found");
 		return;
 	}
 
 	if (!g_bClientGroupText[client][view_as<int>(groupFilter)] && !g_bClientGroupVoice[client][view_as<int>(groupFilter)]) {
-		CPrintToChat(client, "You do not have this group self-muted.");
+		CPrintToChat(client, "%t", "Group Not Muted");
 		return;
 	}
 
 	ApplySelfUnMuteGroup(client, groupFilter);
-	CPrintToChat(client, "You have {green}self-unmuted {olive}%s Group", g_sGroupsNames[view_as<int>(groupFilter)]);
+
+	char groupName[64];
+	FormatEx(groupName, sizeof(groupName), "%T", g_sGroupsNames[view_as<int>(groupFilter)], client);
+	CPrintToChat(client, "%t", "Group Unmuted", groupName);
 }
 
 void HandleGroupSelfMute(int client, const char[] groupFilterC, MuteType muteType, MuteDuration muteDuration) {
@@ -940,7 +964,7 @@ void HandleGroupSelfMute(int client, const char[] groupFilterC, MuteType muteTyp
 			}
 
 			if (!found) {
-				CPrintToChat(client, "No player was found.");
+				CPrintToChat(client, "%t", "No Player Found");
 				return;
 			}
 
@@ -957,7 +981,7 @@ void HandleGroupSelfMute(int client, const char[] groupFilterC, MuteType muteTyp
 	}
 
 	if (groupFilter == GROUP_MAX_NUM) {
-		CPrintToChat(client, "Cannot find the specified group.");
+		CPrintToChat(client, "%t", "Group Not Found");
 		return;
 	}
 
@@ -979,12 +1003,12 @@ void HandleGroupSelfMute(int client, const char[] groupFilterC, MuteType muteTyp
 
 	MuteType muteTypeEx = GetMuteType(g_bClientGroupText[client][view_as<int>(groupFilter)], g_bClientGroupVoice[client][view_as<int>(groupFilter)]);
 	if (muteTypeEx == muteType) {
-		CPrintToChat(client, "You have already self-muted this group for either voice or text chats or both!");
+		CPrintToChat(client, "%t", "Group Already Muted Type");
 		return;
 	}
 
 	if (g_bClientGroupText[client][view_as<int>(groupFilter)] && g_bClientGroupVoice[client][view_as<int>(groupFilter)]) {
-		CPrintToChat(client, "You have already self-muted this group for its voice and text chats!");
+		CPrintToChat(client, "%t", "Group Already Muted All");
 		return;
 	}
 
@@ -993,7 +1017,7 @@ void HandleGroupSelfMute(int client, const char[] groupFilterC, MuteType muteTyp
 			|| (g_bClientGroupVoice[client][view_as<int>(GROUP_ALL)] && muteType == MuteType_Voice)
 			|| (g_bClientGroupText[client][view_as<int>(GROUP_ALL)] && g_bClientGroupVoice[client][view_as<int>(GROUP_ALL)]
 			&& muteType == MuteType_All)) {
-			CPrintToChat(client, "You have already self-muted All Players Group, why do you want to self-mute any other group dummy.");
+			CPrintToChat(client, "%t", "All Players Group Already Muted");
 			return;
 		}
 
@@ -1021,7 +1045,7 @@ void HandleClientSelfMute(int client, int target, MuteType muteType, MuteDuratio
 	}
 
 	if (g_bClientText[client][target] && g_bClientVoice[client][target]) {
-		CPrintToChat(client, "You have already self-muted this player for their voice and text chats!");
+		CPrintToChat(client, "%t", "Player Already Muted All");
 		return;
 	}
 
@@ -1038,13 +1062,14 @@ void ShowMuteTypeMenu(int client, int target) {
 
 	Menu menu = new Menu(Menu_ShowMuteType);
 
-	char title[128];
-	FormatEx(title, sizeof(title), "[SM] Choose how you want to self-mute %N", target);
+	char title[256];
+	FormatEx(title, sizeof(title), "[SM] %T", "Menu Mute Type Player Title", client, target);
 	menu.SetTitle(title);
 
 	int userid = GetClientUserId(target);
 
 	char data[12];
+	char buffer[128];
 
 	int flags = ITEMDRAW_DEFAULT;
 	if (muteType == MuteType_Voice) {
@@ -1052,17 +1077,20 @@ void ShowMuteTypeMenu(int client, int target) {
 	}
 
 	FormatEx(data, sizeof(data), "0|%d", userid);
-	menu.AddItem(data, "Voice Chat Only", flags);
+	FormatEx(buffer, sizeof(buffer), "%T", "Voice Chat Only", client);
+	menu.AddItem(data, buffer, flags);
 
 	if (muteType == MuteType_Text) {
 		flags = ITEMDRAW_DISABLED;
 	}
 
 	FormatEx(data, sizeof(data), "1|%d", userid);
-	menu.AddItem(data, "Text Chat Only", flags);
+	FormatEx(buffer, sizeof(buffer), "%T", "Text Chat Only", client);
+	menu.AddItem(data, buffer, flags);
 
 	FormatEx(data, sizeof(data), "2|%d", userid);
-	menu.AddItem(data, "Both Text and Voice Chats");
+	FormatEx(buffer, sizeof(buffer), "%T", "Both Text and Voice Chats", client);
+	menu.AddItem(data, buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -1083,7 +1111,7 @@ int Menu_ShowMuteType(Menu menu, MenuAction action, int param1, int param2) {
 
 			int target = GetClientOfUserId(StringToInt(data[1]));
 			if (!target) {
-				CPrintToChat(param1, "Player is no longer available.");
+				CPrintToChat(param1, "%t", "Player no longer available");
 				return -1;
 			}
 
@@ -1099,28 +1127,30 @@ void StartSelfMute(int client, int target, MuteType muteType, MuteDuration muteD
 	switch(muteDuration) {
 		case MuteDuration_Temporary: {
 			if (IsClientAdmin(target)) {
-				CPrintToChat(client, "You are using SelfMute on an admin, be careful!");
+				CPrintToChat(client, "%t", "Muting Admin Warning");
 				LogAction(client, target, "%L Self-Muted an admin. %L", client, target);
 			}
 
 			ApplySelfMute(client, target, muteType);
 			MuteType muteTypeEx = GetMuteType(g_bClientText[client][target], g_bClientVoice[client][target]);
 
-			CPrintToChat(client, "You have {green}self-muted {olive}%N\n{default}Voice Chat: {olive}%s\n{default}Text Chat: {olive}%s", target,
-						(muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No",
-						(muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No");
+			char voice[32], text[32];
+			FormatEx(voice, sizeof(voice), "%T", (muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			FormatEx(text, sizeof(text), "%T", (muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			CPrintToChat(client, "%t", "Player Muted", target, voice, text);
 		}
 
 		case MuteDuration_Permanent: {
 			ApplySelfMute(client, target, muteType);
 			MuteType muteTypeEx = GetMuteType(g_bClientText[client][target], g_bClientVoice[client][target]);
 
-			CPrintToChat(client, "You have {green}self-muted {olive}%N\n{default}Voice Chat: {olive}%s\n{default}Text Chat: {olive}%s", target,
-						(muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No",
-						(muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No");
+			char voice[32], text[32];
+			FormatEx(voice, sizeof(voice), "%T", (muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			FormatEx(text, sizeof(text), "%T", (muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			CPrintToChat(client, "%t", "Player Muted", target, voice, text);
 
 			SaveSelfMuteClient(client, target);
-			CPrintToChat(client, "The {olive}self-mute {default}has been saved!");
+			CPrintToChat(client, "%t", "Mute Saved");
 		}
 
 		case MuteDuration_AskFirst: {
@@ -1132,19 +1162,22 @@ void StartSelfMute(int client, int target, MuteType muteType, MuteDuration muteD
 void ShowAlertMenu(int client, int target, MuteType muteType) {
 	Menu menu = new Menu(Menu_ShowAlertMenu);
 
-	char title[128];
-	FormatEx(title, sizeof(title), "[SM] Choose how you want to self-mute %N", target);
+	char title[256];
+	FormatEx(title, sizeof(title), "[SM] %T", "Menu Mute Type Player Title", client, target);
 	menu.SetTitle(title);
 
 	int userid = GetClientUserId(target);
 
 	char data[12];
+	char buffer[128];
 
 	FormatEx(data, sizeof(data), "%d|0|%d", view_as<int>(muteType), userid);
-	menu.AddItem(data, "Temporarily");
+	FormatEx(buffer, sizeof(buffer), "%T", "Temporarily", client);
+	menu.AddItem(data, buffer);
 
 	FormatEx(data, sizeof(data), "%d|1|%d", view_as<int>(muteType), userid);
-	menu.AddItem(data, "Permanently");
+	FormatEx(buffer, sizeof(buffer), "%T", "Permanently", client);
+	menu.AddItem(data, buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -1165,7 +1198,7 @@ int Menu_ShowAlertMenu(Menu menu, MenuAction action, int param1, int param2) {
 
 			int target = GetClientOfUserId(StringToInt(data[2]));
 			if (!target) {
-				CPrintToChat(param1, "Player is no longer available.");
+				CPrintToChat(param1, "%t", "Player no longer available");
 				return -1;
 			}
 
@@ -1183,13 +1216,17 @@ void ShowMuteTypeMenuGroup(int client, GroupFilter groupFilter) {
 
 	Menu menu = new Menu(Menu_ShowMuteTypeGroup);
 
-	char title[128];
-	FormatEx(title, sizeof(title), "[SM] Choose how you want to self-mute %s Group", g_sGroupsNames[view_as<int>(groupFilter)]);
+	char groupName[64];
+	FormatEx(groupName, sizeof(groupName), "%T", g_sGroupsNames[view_as<int>(groupFilter)], client);
+
+	char title[256];
+	FormatEx(title, sizeof(title), "[SM] %T", "Menu Mute Type Group Title", client, groupName);
 	menu.SetTitle(title);
 
 	int id = view_as<int>(groupFilter);
 
 	char data[12];
+	char buffer[128];
 
 	int flags = ITEMDRAW_DEFAULT;
 	if (muteType == MuteType_Voice) {
@@ -1197,7 +1234,8 @@ void ShowMuteTypeMenuGroup(int client, GroupFilter groupFilter) {
 	}
 
 	FormatEx(data, sizeof(data), "0|%d", id);
-	menu.AddItem(data, "Voice Chat Only", flags);
+	FormatEx(buffer, sizeof(buffer), "%T", "Voice Chat Only", client);
+	menu.AddItem(data, buffer, flags);
 
 	flags = ITEMDRAW_DEFAULT;
 	if (muteType == MuteType_Text) {
@@ -1205,10 +1243,12 @@ void ShowMuteTypeMenuGroup(int client, GroupFilter groupFilter) {
 	}
 
 	FormatEx(data, sizeof(data), "1|%d", id);
-	menu.AddItem(data, "Text Chat Only", flags);
+	FormatEx(buffer, sizeof(buffer), "%T", "Text Chat Only", client);
+	menu.AddItem(data, buffer, flags);
 
 	FormatEx(data, sizeof(data), "2|%d", id);
-	menu.AddItem(data, "Both Text and Voice Chats");
+	FormatEx(buffer, sizeof(buffer), "%T", "Both Text and Voice Chats", client);
+	menu.AddItem(data, buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -1241,21 +1281,25 @@ void StartSelfMuteGroup(int client, GroupFilter groupFilter, MuteType muteType, 
 			ApplySelfMuteGroup(client, g_sGroupsFilters[view_as<int>(groupFilter)], muteType);
 			MuteType muteTypeEx = GetMuteType(g_bClientGroupText[client][view_as<int>(groupFilter)], g_bClientGroupVoice[client][view_as<int>(groupFilter)]);
 
-			CPrintToChat(client, "You have {green}self-muted {olive}%s Group\n{default}Voice Chat: {olive}%s\n{default}Text Chat: {olive}%s", g_sGroupsNames[view_as<int>(groupFilter)],
-						(muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No",
-						(muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No");
+			char groupName[64], voice[32], text[32];
+			FormatEx(groupName, sizeof(groupName), "%T", g_sGroupsNames[view_as<int>(groupFilter)], client);
+			FormatEx(voice, sizeof(voice), "%T", (muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			FormatEx(text, sizeof(text), "%T", (muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			CPrintToChat(client, "%t", "Group Muted", groupName, voice, text);
 		}
 
 		case MuteDuration_Permanent: {
 			ApplySelfMuteGroup(client, g_sGroupsFilters[view_as<int>(groupFilter)], muteType);
 			MuteType muteTypeEx = GetMuteType(g_bClientGroupText[client][view_as<int>(groupFilter)], g_bClientGroupVoice[client][view_as<int>(groupFilter)]);
 
-			CPrintToChat(client, "You have {green}self-muted {olive}%s Group\n{default}Voice Chat: {olive}%s\n{default}Text Chat: {olive}%s", g_sGroupsNames[view_as<int>(groupFilter)],
-						(muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No",
-						(muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No");
+			char groupName[64], voice[32], text[32];
+			FormatEx(groupName, sizeof(groupName), "%T", g_sGroupsNames[view_as<int>(groupFilter)], client);
+			FormatEx(voice, sizeof(voice), "%T", (muteTypeEx==MuteType_Voice||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			FormatEx(text, sizeof(text), "%T", (muteTypeEx==MuteType_Text||muteTypeEx==MuteType_All)?"Yes":"No", client);
+			CPrintToChat(client, "%t", "Group Muted", groupName, voice, text);
 
 			SaveSelfMuteGroup(client, groupFilter);
-			CPrintToChat(client, "The {olive}self-mute {default}has been saved!");
+			CPrintToChat(client, "%t", "Mute Saved");
 		}
 
 		case MuteDuration_AskFirst: {
@@ -1267,19 +1311,25 @@ void StartSelfMuteGroup(int client, GroupFilter groupFilter, MuteType muteType, 
 void ShowAlertMenuGroup(int client, GroupFilter groupFilter, MuteType muteType) {
 	Menu menu = new Menu(Menu_ShowAlertMenuGroup);
 
-	char title[128];
-	FormatEx(title, sizeof(title), "[SM] Choose how you want to self-mute %s Group", g_sGroupsNames[view_as<int>(groupFilter)]);
+	char groupName[64];
+	FormatEx(groupName, sizeof(groupName), "%T", g_sGroupsNames[view_as<int>(groupFilter)], client);
+
+	char title[256];
+	FormatEx(title, sizeof(title), "[SM] %T", "Menu Mute Type Group Title", client, groupName);
 	menu.SetTitle(title);
 
 	int id = view_as<int>(groupFilter);
 
 	char data[12];
+	char buffer[128];
 
 	FormatEx(data, sizeof(data), "%d|0|%d", view_as<int>(muteType), id);
-	menu.AddItem(data, "Temporarily");
+	FormatEx(buffer, sizeof(buffer), "%T", "Temporarily", client);
+	menu.AddItem(data, buffer);
 
 	FormatEx(data, sizeof(data), "%d|1|%d", view_as<int>(muteType), id);
-	menu.AddItem(data, "Permanently");
+	FormatEx(buffer, sizeof(buffer), "%T", "Permanently", client);
+	menu.AddItem(data, buffer);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -1669,7 +1719,7 @@ public void OnClientDisconnect(int client) {
 public void CookieMenu_Handler(int client, CookieMenuAction action, any info, char[] buffer, int maxlen)
 {
 	if (action == CookieMenuAction_DisplayOption) {
-		Format(buffer, maxlen, "Self-Mute Settings");
+		Format(buffer, maxlen, "%T", "Cookie Menu Settings", client);
 	}
 
 	if (action == CookieMenuAction_SelectOption) {
