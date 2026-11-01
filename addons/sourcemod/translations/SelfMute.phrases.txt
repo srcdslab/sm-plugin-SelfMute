@@ -1,0 +1,631 @@
+"Phrases"
+{
+	"Group All Players"
+	{
+		"en"		"All Players"
+		"fr"		"Tous les joueurs"
+		"ru"		"Все игроки"
+		"es"		"Todos los jugadores"
+		"de"		"Alle Spieler"
+		"pt"		"Todos os jogadores"
+		"chi"		"所有玩家"
+	}
+	"Group Humans"
+	{
+		"en"		"Humans"
+		"fr"		"Humains"
+		"ru"		"Люди"
+		"es"		"Humanos"
+		"de"		"Menschen"
+		"pt"		"Humanos"
+		"chi"		"人类"
+	}
+	"Group Zombies"
+	{
+		"en"		"Zombies"
+		"fr"		"Zombies"
+		"ru"		"Зомби"
+		"es"		"Zombis"
+		"de"		"Zombies"
+		"pt"		"Zumbis"
+		"chi"		"僵尸"
+	}
+	"Group Counter Terrorists"
+	{
+		"en"		"Counter Terrorists"
+		"fr"		"Antiterroristes"
+		"ru"		"Спецназ"
+		"es"		"Antiterroristas"
+		"de"		"Antiterroristen"
+		"pt"		"Contra-terroristas"
+		"chi"		"反恐精英"
+	}
+	"Group Terrorists"
+	{
+		"en"		"Terrorists"
+		"fr"		"Terroristes"
+		"ru"		"Террористы"
+		"es"		"Terroristas"
+		"de"		"Terroristen"
+		"pt"		"Terroristas"
+		"chi"		"恐怖分子"
+	}
+	"Group Spectators"
+	{
+		"en"		"Spectators"
+		"fr"		"Spectateurs"
+		"ru"		"Наблюдатели"
+		"es"		"Espectadores"
+		"de"		"Zuschauer"
+		"pt"		"Espectadores"
+		"chi"		"观察者"
+	}
+	"Group No-Steam Players"
+	{
+		"en"		"No-Steam Players"
+		"fr"		"Joueurs non-Steam"
+		"ru"		"Игроки без Steam"
+		"es"		"Jugadores sin Steam"
+		"de"		"Nicht-Steam-Spieler"
+		"pt"		"Jogadores sem Steam"
+		"chi"		"非 Steam 玩家"
+	}
+	"Group Steam Players"
+	{
+		"en"		"Steam Players"
+		"fr"		"Joueurs Steam"
+		"ru"		"Игроки Steam"
+		"es"		"Jugadores de Steam"
+		"de"		"Steam-Spieler"
+		"pt"		"Jogadores Steam"
+		"chi"		"Steam 玩家"
+	}
+	"Menu Cookies Title"
+	{
+		"en"		"Choose your preferred cookie"
+		"fr"		"Choisissez vos préférences"
+		"ru"		"Выберите предпочтительные настройки"
+		"es"		"Elige tus preferencias"
+		"de"		"Wähle deine bevorzugten Einstellungen"
+		"pt"		"Escolha suas preferências"
+		"chi"		"选择你的偏好设置"
+	}
+	"Menu Cookies Mute Type"
+	{
+		"en"		"Mute Type: Voice | Text | Both | Ask First"
+		"fr"		"Type de mute : Vocal | Texte | Les deux | Demander d'abord"
+		"ru"		"Тип заглушения: Голос | Текст | Оба | Сначала спрашивать"
+		"es"		"Tipo de silenciamiento: Voz | Texto | Ambos | Preguntar primero"
+		"de"		"Stummschaltungsart: Sprache | Text | Beides | Erst fragen"
+		"pt"		"Tipo de mute: Voz | Texto | Ambos | Perguntar antes"
+		"chi"		"屏蔽类型：语音 | 文字 | 全部 | 先询问"
+	}
+	"Menu Cookies Mute Duration"
+	{
+		"en"		"Mute Duration: Temporary | Permanent | Ask First"
+		"fr"		"Durée du mute : Temporaire | Permanent | Demander d'abord"
+		"ru"		"Длительность заглушения: Временно | Навсегда | Сначала спрашивать"
+		"es"		"Duración del silenciamiento: Temporal | Permanente | Preguntar primero"
+		"de"		"Dauer der Stummschaltung: Temporär | Dauerhaft | Erst fragen"
+		"pt"		"Duração do mute: Temporário | Permanente | Perguntar antes"
+		"chi"		"屏蔽时长：临时 | 永久 | 先询问"
+	}
+	"Menu Cookies Sub Title"
+	{
+		"en"		"Choose your preferred cookie: how you want to self-mute a player or a group"
+		"fr"		"Choisissez vos préférences : comment vous voulez muter un joueur ou un groupe"
+		"ru"		"Выберите предпочтительные настройки: как заглушать игрока или группу"
+		"es"		"Elige tus preferencias: cómo quieres silenciar a un jugador o a un grupo"
+		"de"		"Wähle deine bevorzugten Einstellungen: wie du einen Spieler oder eine Gruppe stummschalten willst"
+		"pt"		"Escolha suas preferências: como você quer silenciar um jogador ou um grupo"
+		"chi"		"选择你的偏好设置：你想如何屏蔽玩家或群组"
+	}
+	"Voice Chat"
+	{
+		"en"		"Voice Chat"
+		"fr"		"Chat vocal"
+		"ru"		"Голосовой чат"
+		"es"		"Chat de voz"
+		"de"		"Sprachchat"
+		"pt"		"Chat de voz"
+		"chi"		"语音聊天"
+	}
+	"Text Chat"
+	{
+		"en"		"Text Chat"
+		"fr"		"Chat texte"
+		"ru"		"Текстовый чат"
+		"es"		"Chat de texto"
+		"de"		"Textchat"
+		"pt"		"Chat de texto"
+		"chi"		"文字聊天"
+	}
+	"Both Chats"
+	{
+		"en"		"Both Chats"
+		"fr"		"Les deux chats"
+		"ru"		"Оба чата"
+		"es"		"Ambos chats"
+		"de"		"Beide Chats"
+		"pt"		"Ambos os chats"
+		"chi"		"两种聊天"
+	}
+	"Ask First"
+	{
+		"en"		"Ask First"
+		"fr"		"Demander d'abord"
+		"ru"		"Сначала спрашивать"
+		"es"		"Preguntar primero"
+		"de"		"Erst fragen"
+		"pt"		"Perguntar antes"
+		"chi"		"先询问"
+	}
+	"Temporary"
+	{
+		"en"		"Temporary"
+		"fr"		"Temporaire"
+		"ru"		"Временно"
+		"es"		"Temporal"
+		"de"		"Temporär"
+		"pt"		"Temporário"
+		"chi"		"临时"
+	}
+	"Permanent"
+	{
+		"en"		"Permanent"
+		"fr"		"Permanent"
+		"ru"		"Навсегда"
+		"es"		"Permanente"
+		"de"		"Dauerhaft"
+		"pt"		"Permanente"
+		"chi"		"永久"
+	}
+	"Cookie Saved"
+	{
+		"en"		"Cookie saved!"
+		"fr"		"Préférence enregistrée !"
+		"ru"		"Настройка сохранена!"
+		"es"		"¡Preferencia guardada!"
+		"de"		"Einstellung gespeichert!"
+		"pt"		"Preferência salva!"
+		"chi"		"设置已保存！"
+	}
+	"Not Authorized"
+	{
+		"en"		"You need to be authorized to use this command. Please rejoin."
+		"fr"		"Vous devez être authentifié pour utiliser cette commande. Veuillez vous reconnecter."
+		"ru"		"Вы должны быть авторизованы, чтобы использовать эту команду. Пожалуйста, перезайдите."
+		"es"		"Debes estar autenticado para usar este comando. Vuelve a conectarte."
+		"de"		"Du musst authentifiziert sein, um diesen Befehl zu benutzen. Bitte verbinde dich neu."
+		"pt"		"Você precisa estar autenticado para usar este comando. Reconecte-se."
+		"chi"		"你需要通过验证才能使用此命令。请重新进入服务器。"
+	}
+	"Unmuted All"
+	{
+		"en"		"You have self-unmuted all players and groups."
+		"fr"		"Vous avez démuté tous les joueurs et groupes."
+		"ru"		"Вы сняли заглушение со всех игроков и групп."
+		"es"		"Has quitado el silencio a todos los jugadores y grupos."
+		"de"		"Du hast die Stummschaltung aller Spieler und Gruppen aufgehoben."
+		"pt"		"Você removeu o silenciamento de todos os jogadores e grupos."
+		"chi"		"你已取消屏蔽所有玩家和群组。"
+	}
+	"Cannot Unmute Self"
+	{
+		"en"		"Silly, you cannot unmute yourself!"
+		"fr"		"Voyons, vous ne pouvez pas vous démuter vous-même !"
+		"ru"		"Глупенький, нельзя снять заглушение с самого себя!"
+		"es"		"¡Tontito, no puedes quitarte el silencio a ti mismo!"
+		"de"		"Du Dummerchen, du kannst deine eigene Stummschaltung nicht aufheben!"
+		"pt"		"Bobinho, você não pode remover o silenciamento de si mesmo!"
+		"chi"		"傻瓜，你不能取消屏蔽自己！"
+	}
+	"Player Not Muted"
+	{
+		"en"		"You do not have this player self-muted."
+		"fr"		"Vous n'avez pas muté ce joueur."
+		"ru"		"Этот игрок у вас не заглушён."
+		"es"		"No tienes silenciado a este jugador."
+		"de"		"Du hast diesen Spieler nicht stummgeschaltet."
+		"pt"		"Você não silenciou este jogador."
+		"chi"		"你没有屏蔽该玩家。"
+	}
+	"Usage PSM"
+	{
+		"en"		"Usage: !psm <playername|@group>"
+		"fr"		"Utilisation : !psm <playername|@group>"
+		"ru"		"Использование: !psm <playername|@group>"
+		"es"		"Uso: !psm <playername|@group>"
+		"de"		"Verwendung: !psm <playername|@group>"
+		"pt"		"Uso: !psm <playername|@group>"
+		"chi"		"用法：!psm <playername|@group>"
+	}
+	"Cannot Mute Self"
+	{
+		"en"		"Silly, you cannot mute yourself!"
+		"fr"		"Voyons, vous ne pouvez pas vous muter vous-même !"
+		"ru"		"Глупенький, нельзя заглушить самого себя!"
+		"es"		"¡Tontito, no puedes silenciarte a ti mismo!"
+		"de"		"Du Dummerchen, du kannst dich nicht selbst stummschalten!"
+		"pt"		"Bobinho, você não pode silenciar a si mesmo!"
+		"chi"		"傻瓜，你不能屏蔽自己！"
+	}
+	"Usage PSU"
+	{
+		"en"		"Usage: !psu <playername|@group>"
+		"fr"		"Utilisation : !psu <playername|@group>"
+		"ru"		"Использование: !psu <playername|@group>"
+		"es"		"Uso: !psu <playername|@group>"
+		"de"		"Verwendung: !psu <playername|@group>"
+		"pt"		"Uso: !psu <playername|@group>"
+		"chi"		"用法：!psu <playername|@group>"
+	}
+	"Player Not Perma Muted"
+	{
+		"en"		"You do not have this player permanently self-muted."
+		"fr"		"Vous n'avez pas muté ce joueur de façon permanente."
+		"ru"		"Этот игрок у вас не заглушён навсегда."
+		"es"		"No tienes silenciado a este jugador de forma permanente."
+		"de"		"Du hast diesen Spieler nicht dauerhaft stummgeschaltet."
+		"pt"		"Você não silenciou este jogador permanentemente."
+		"chi"		"你没有永久屏蔽该玩家。"
+	}
+	"Player Not Perma Muted Use SU"
+	{
+		"en"		"You do not have this player permanently self-muted. Use !su to unmute temporary mutes."
+		"fr"		"Vous n'avez pas muté ce joueur de façon permanente. Utilisez !su pour retirer les mutes temporaires."
+		"ru"		"Этот игрок у вас не заглушён навсегда. Используйте !su, чтобы снять временное заглушение."
+		"es"		"No tienes silenciado a este jugador de forma permanente. Usa !su para quitar los silencios temporales."
+		"de"		"Du hast diesen Spieler nicht dauerhaft stummgeschaltet. Benutze !su, um temporäre Stummschaltungen aufzuheben."
+		"pt"		"Você não silenciou este jogador permanentemente. Use !su para remover silenciamentos temporários."
+		"chi"		"你没有永久屏蔽该玩家。使用 !su 取消临时屏蔽。"
+	}
+	"Player Unmuted"
+	{
+		"#format"	"{1:N}"
+		"en"		"You have {green}self-unmuted {olive}{1}"
+		"fr"		"Vous avez {green}démuté {olive}{1}"
+		"ru"		"Вы {green}сняли заглушение с {olive}{1}"
+		"es"		"Has {green}quitado el silencio a {olive}{1}"
+		"de"		"{green}Stummschaltung aufgehoben {default}für {olive}{1}"
+		"pt"		"Você {green}removeu o silenciamento de {olive}{1}"
+		"chi"		"你已{green}取消屏蔽 {olive}{1}"
+	}
+	"Menu Muted List Title"
+	{
+		"en"		"Your self-muted targets list"
+		"fr"		"Votre liste de cibles mutées"
+		"ru"		"Ваш список заглушённых целей"
+		"es"		"Tu lista de objetivos silenciados"
+		"de"		"Deine Liste stummgeschalteter Ziele"
+		"pt"		"Sua lista de alvos silenciados"
+		"chi"		"你的屏蔽列表"
+	}
+	"Menu Players List"
+	{
+		"en"		"Players self-mute list"
+		"fr"		"Liste self-mute : joueurs"
+		"ru"		"Список self-mute: игроки"
+		"es"		"Lista de self-mute: jugadores"
+		"de"		"Self-Mute-Liste: Spieler"
+		"pt"		"Lista de self-mute: jogadores"
+		"chi"		"屏蔽列表：玩家"
+	}
+	"Menu Groups List"
+	{
+		"en"		"Groups self-mute list"
+		"fr"		"Liste self-mute : groupes"
+		"ru"		"Список self-mute: группы"
+		"es"		"Lista de self-mute: grupos"
+		"de"		"Self-Mute-Liste: Gruppen"
+		"pt"		"Lista de self-mute: grupos"
+		"chi"		"屏蔽列表：群组"
+	}
+	"Menu Players Muted Title"
+	{
+		"en"		"Players - self-mute list | X = Muted"
+		"fr"		"Joueurs - liste self-mute | X = Muté"
+		"ru"		"Игроки - список self-mute | X = Заглушено"
+		"es"		"Jugadores - lista de self-mute | X = Silenciado"
+		"de"		"Spieler - Self-Mute-Liste | X = Stumm"
+		"pt"		"Jogadores - lista de self-mute | X = Silenciado"
+		"chi"		"玩家 - 屏蔽列表 | X = 已屏蔽"
+	}
+	"Menu Groups Muted Title"
+	{
+		"en"		"Groups - self-mute list | X = Muted"
+		"fr"		"Groupes - liste self-mute | X = Muté"
+		"ru"		"Группы - список self-mute | X = Заглушено"
+		"es"		"Grupos - lista de self-mute | X = Silenciado"
+		"de"		"Gruppen - Self-Mute-Liste | X = Stumm"
+		"pt"		"Grupos - lista de self-mute | X = Silenciado"
+		"chi"		"群组 - 屏蔽列表 | X = 已屏蔽"
+	}
+	"Menu Mute Status Saved"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"Voice[{1}] Text[{2}] - Saved"
+		"fr"		"Vocal[{1}] Texte[{2}] - Enregistré"
+		"ru"		"Голос[{1}] Текст[{2}] - Сохранено"
+		"es"		"Voz[{1}] Texto[{2}] - Guardado"
+		"de"		"Sprache[{1}] Text[{2}] - Gespeichert"
+		"pt"		"Voz[{1}] Texto[{2}] - Salvo"
+		"chi"		"语音[{1}] 文字[{2}] - 已保存"
+	}
+	"Menu Mute Status Not Saved"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"Voice[{1}] Text[{2}] - Not Saved"
+		"fr"		"Vocal[{1}] Texte[{2}] - Non enregistré"
+		"ru"		"Голос[{1}] Текст[{2}] - Не сохранено"
+		"es"		"Voz[{1}] Texto[{2}] - No guardado"
+		"de"		"Sprache[{1}] Text[{2}] - Nicht gespeichert"
+		"pt"		"Voz[{1}] Texto[{2}] - Não salvo"
+		"chi"		"语音[{1}] 文字[{2}] - 未保存"
+	}
+	"No Result"
+	{
+		"en"		"No result was found!"
+		"fr"		"Aucun résultat trouvé !"
+		"ru"		"Ничего не найдено!"
+		"es"		"¡No se encontró ningún resultado!"
+		"de"		"Kein Ergebnis gefunden!"
+		"pt"		"Nenhum resultado encontrado!"
+		"chi"		"未找到任何结果！"
+	}
+	"Menu Choose Target Title"
+	{
+		"en"		"Choose who you want to self-mute"
+		"fr"		"Choisissez qui vous voulez muter"
+		"ru"		"Выберите, кого хотите заглушить"
+		"es"		"Elige a quién quieres silenciar"
+		"de"		"Wähle, wen du stummschalten willst"
+		"pt"		"Escolha quem você quer silenciar"
+		"chi"		"选择你要屏蔽的对象"
+	}
+	"Menu Players To Mute Title"
+	{
+		"en"		"Players to self-mute [TEXT CHAT] [VOICE CHAT]"
+		"fr"		"Joueurs à muter [CHAT TEXTE] [CHAT VOCAL]"
+		"ru"		"Игроки для заглушения [ТЕКСТОВЫЙ ЧАТ] [ГОЛОСОВОЙ ЧАТ]"
+		"es"		"Jugadores para silenciar [CHAT DE TEXTO] [CHAT DE VOZ]"
+		"de"		"Spieler zum Stummschalten [TEXTCHAT] [SPRACHCHAT]"
+		"pt"		"Jogadores para silenciar [CHAT DE TEXTO] [CHAT DE VOZ]"
+		"chi"		"可屏蔽的玩家 [文字聊天] [语音聊天]"
+	}
+	"Menu Groups To Mute Title"
+	{
+		"en"		"Groups to self-mute [TEXT CHAT] [VOICE CHAT]"
+		"fr"		"Groupes à muter [CHAT TEXTE] [CHAT VOCAL]"
+		"ru"		"Группы для заглушения [ТЕКСТОВЫЙ ЧАТ] [ГОЛОСОВОЙ ЧАТ]"
+		"es"		"Grupos para silenciar [CHAT DE TEXTO] [CHAT DE VOZ]"
+		"de"		"Gruppen zum Stummschalten [TEXTCHAT] [SPRACHCHAT]"
+		"pt"		"Grupos para silenciar [CHAT DE TEXTO] [CHAT DE VOZ]"
+		"chi"		"可屏蔽的群组 [文字聊天] [语音聊天]"
+	}
+	"Player Already Muted Change Settings"
+	{
+		"en"		"You have already self-muted this player. If you want to self-mute another type of chat, please change your settings in {olive}!smcookies"
+		"fr"		"Vous avez déjà muté ce joueur. Pour muter un autre type de chat, modifiez vos paramètres avec {olive}!smcookies"
+		"ru"		"Вы уже заглушили этого игрока. Для другого типа чата измените настройки: {olive}!smcookies"
+		"es"		"Ya has silenciado a este jugador. Si quieres silenciar otro tipo de chat, cambia tus ajustes en {olive}!smcookies"
+		"de"		"Du hast diesen Spieler bereits stummgeschaltet. Für eine andere Chatart ändere deine Einstellungen in {olive}!smcookies"
+		"pt"		"Você já silenciou este jogador. Se quiser silenciar outro tipo de chat, altere suas configurações em {olive}!smcookies"
+		"chi"		"你已屏蔽该玩家。如需屏蔽其他类型的聊天，请更改设置：{olive}!smcookies"
+	}
+	"Group Already Muted Change Settings"
+	{
+		"en"		"You have already self-muted this group. If you want to self-mute another type of chat, please change your settings in {olive}!smcookies"
+		"fr"		"Vous avez déjà muté ce groupe. Pour muter un autre type de chat, modifiez vos paramètres avec {olive}!smcookies"
+		"ru"		"Вы уже заглушили эту группу. Для другого типа чата измените настройки: {olive}!smcookies"
+		"es"		"Ya has silenciado a este grupo. Si quieres silenciar otro tipo de chat, cambia tus ajustes en {olive}!smcookies"
+		"de"		"Du hast diese Gruppe bereits stummgeschaltet. Für eine andere Chatart ändere deine Einstellungen in {olive}!smcookies"
+		"pt"		"Você já silenciou este grupo. Se quiser silenciar outro tipo de chat, altere suas configurações em {olive}!smcookies"
+		"chi"		"你已屏蔽该群组。如需屏蔽其他类型的聊天，请更改设置：{olive}!smcookies"
+	}
+	"Group Not Found"
+	{
+		"en"		"Cannot find the specified group."
+		"fr"		"Impossible de trouver le groupe indiqué."
+		"ru"		"Указанная группа не найдена."
+		"es"		"No se encuentra el grupo indicado."
+		"de"		"Die angegebene Gruppe wurde nicht gefunden."
+		"pt"		"Não foi possível encontrar o grupo especificado."
+		"chi"		"找不到指定的群组。"
+	}
+	"Group Not Muted"
+	{
+		"en"		"You do not have this group self-muted."
+		"fr"		"Vous n'avez pas muté ce groupe."
+		"ru"		"Эта группа у вас не заглушена."
+		"es"		"No tienes silenciado a este grupo."
+		"de"		"Du hast diese Gruppe nicht stummgeschaltet."
+		"pt"		"Você não silenciou este grupo."
+		"chi"		"你没有屏蔽该群组。"
+	}
+	"Group Unmuted"
+	{
+		"#format"	"{1:s}"
+		"en"		"You have {green}self-unmuted {olive}{1} Group"
+		"fr"		"Vous avez {green}démuté {olive}le groupe {1}"
+		"ru"		"Вы {green}сняли заглушение с группы {olive}{1}"
+		"es"		"Has {green}quitado el silencio al grupo {olive}{1}"
+		"de"		"{green}Stummschaltung aufgehoben {default}für die Gruppe {olive}{1}"
+		"pt"		"Você {green}removeu o silenciamento do grupo {olive}{1}"
+		"chi"		"你已{green}取消屏蔽群组 {olive}{1}"
+	}
+	"No Player Found"
+	{
+		"en"		"No player was found."
+		"fr"		"Aucun joueur trouvé."
+		"ru"		"Игроки не найдены."
+		"es"		"No se encontró ningún jugador."
+		"de"		"Kein Spieler gefunden."
+		"pt"		"Nenhum jogador encontrado."
+		"chi"		"未找到任何玩家。"
+	}
+	"Group Already Muted Type"
+	{
+		"en"		"You have already self-muted this group for either voice or text chats or both!"
+		"fr"		"Vous avez déjà muté ce groupe pour le chat vocal, le chat texte ou les deux !"
+		"ru"		"Вы уже заглушили эту группу в голосовом чате, текстовом чате или в обоих!"
+		"es"		"¡Ya has silenciado a este grupo en el chat de voz, de texto o en ambos!"
+		"de"		"Du hast diese Gruppe bereits im Sprachchat, im Textchat oder in beiden stummgeschaltet!"
+		"pt"		"Você já silenciou este grupo no chat de voz, de texto ou em ambos!"
+		"chi"		"你已在语音聊天、文字聊天或两者中屏蔽了该群组！"
+	}
+	"Group Already Muted All"
+	{
+		"en"		"You have already self-muted this group for its voice and text chats!"
+		"fr"		"Vous avez déjà muté ce groupe pour le chat vocal et le chat texte !"
+		"ru"		"Вы уже заглушили эту группу и в голосовом, и в текстовом чате!"
+		"es"		"¡Ya has silenciado a este grupo en el chat de voz y de texto!"
+		"de"		"Du hast diese Gruppe bereits im Sprach- und Textchat stummgeschaltet!"
+		"pt"		"Você já silenciou este grupo no chat de voz e de texto!"
+		"chi"		"你已在语音和文字聊天中屏蔽了该群组！"
+	}
+	"All Players Group Already Muted"
+	{
+		"en"		"You have already self-muted the All Players group, why would you self-mute any other group, dummy?"
+		"fr"		"Vous avez déjà muté le groupe Tous les joueurs, pourquoi voudriez-vous muter un autre groupe, petit malin ?"
+		"ru"		"Вы уже заглушили группу «Все игроки», зачем заглушать другие группы, глупыш?"
+		"es"		"Ya has silenciado al grupo Todos los jugadores, ¿para qué quieres silenciar otro grupo, tontito?"
+		"de"		"Du hast die Gruppe „Alle Spieler“ bereits stummgeschaltet, warum willst du noch eine andere Gruppe stummschalten, du Dummerchen?"
+		"pt"		"Você já silenciou o grupo Todos os jogadores, por que silenciaria outro grupo, bobinho?"
+		"chi"		"你已屏蔽了所有玩家群组，为什么还要屏蔽其他群组呢，笨蛋？"
+	}
+	"Player Already Muted All"
+	{
+		"en"		"You have already self-muted this player for their voice and text chats!"
+		"fr"		"Vous avez déjà muté ce joueur pour le chat vocal et le chat texte !"
+		"ru"		"Вы уже заглушили этого игрока и в голосовом, и в текстовом чате!"
+		"es"		"¡Ya has silenciado a este jugador en el chat de voz y de texto!"
+		"de"		"Du hast diesen Spieler bereits im Sprach- und Textchat stummgeschaltet!"
+		"pt"		"Você já silenciou este jogador no chat de voz e de texto!"
+		"chi"		"你已在语音和文字聊天中屏蔽了该玩家！"
+	}
+	"Menu Mute Type Player Title"
+	{
+		"#format"	"{1:N}"
+		"en"		"Choose how you want to self-mute {1}"
+		"fr"		"Choisissez comment vous voulez muter {1}"
+		"ru"		"Выберите, как заглушить {1}"
+		"es"		"Elige cómo quieres silenciar a {1}"
+		"de"		"Wähle, wie du {1} stummschalten willst"
+		"pt"		"Escolha como você quer silenciar {1}"
+		"chi"		"选择屏蔽 {1} 的方式"
+	}
+	"Voice Chat Only"
+	{
+		"en"		"Voice Chat Only"
+		"fr"		"Chat vocal uniquement"
+		"ru"		"Только голосовой чат"
+		"es"		"Solo chat de voz"
+		"de"		"Nur Sprachchat"
+		"pt"		"Somente chat de voz"
+		"chi"		"仅语音聊天"
+	}
+	"Text Chat Only"
+	{
+		"en"		"Text Chat Only"
+		"fr"		"Chat texte uniquement"
+		"ru"		"Только текстовый чат"
+		"es"		"Solo chat de texto"
+		"de"		"Nur Textchat"
+		"pt"		"Somente chat de texto"
+		"chi"		"仅文字聊天"
+	}
+	"Both Text and Voice Chats"
+	{
+		"en"		"Both Text and Voice Chats"
+		"fr"		"Chat texte et vocal"
+		"ru"		"Текстовый и голосовой чат"
+		"es"		"Chat de texto y de voz"
+		"de"		"Text- und Sprachchat"
+		"pt"		"Chat de texto e de voz"
+		"chi"		"文字和语音聊天"
+	}
+	"Muting Admin Warning"
+	{
+		"en"		"You are using SelfMute on an admin, be careful!"
+		"fr"		"Vous utilisez le self-mute sur un admin, attention !"
+		"ru"		"Вы заглушаете админа, будьте осторожны!"
+		"es"		"Estás usando SelfMute con un admin, ¡ten cuidado!"
+		"de"		"Du benutzt SelfMute bei einem Admin, sei vorsichtig!"
+		"pt"		"Você está usando o SelfMute em um admin, tenha cuidado!"
+		"chi"		"你正在对管理员使用屏蔽，请小心！"
+	}
+	"Player Muted"
+	{
+		"#format"	"{1:N},{2:s},{3:s}"
+		"en"		"You have {green}self-muted {olive}{1}\n{default}Voice Chat: {olive}{2}\n{default}Text Chat: {olive}{3}"
+		"fr"		"Vous avez {green}muté {olive}{1}\n{default}Chat vocal : {olive}{2}\n{default}Chat texte : {olive}{3}"
+		"ru"		"Вы {green}заглушили {olive}{1}\n{default}Голосовой чат: {olive}{2}\n{default}Текстовый чат: {olive}{3}"
+		"es"		"Has {green}silenciado a {olive}{1}\n{default}Chat de voz: {olive}{2}\n{default}Chat de texto: {olive}{3}"
+		"de"		"Du hast {olive}{1} {green}stummgeschaltet\n{default}Sprachchat: {olive}{2}\n{default}Textchat: {olive}{3}"
+		"pt"		"Você {green}silenciou {olive}{1}\n{default}Chat de voz: {olive}{2}\n{default}Chat de texto: {olive}{3}"
+		"chi"		"你已{green}屏蔽 {olive}{1}\n{default}语音聊天：{olive}{2}\n{default}文字聊天：{olive}{3}"
+	}
+	"Mute Saved"
+	{
+		"en"		"The {olive}self-mute {default}has been saved!"
+		"fr"		"Le {olive}self-mute {default}a été enregistré !"
+		"ru"		"{olive}Заглушение {default}сохранено!"
+		"es"		"¡El {olive}silenciamiento {default}se ha guardado!"
+		"de"		"Die {olive}Stummschaltung {default}wurde gespeichert!"
+		"pt"		"O {olive}silenciamento {default}foi salvo!"
+		"chi"		"{olive}屏蔽{default}已保存！"
+	}
+	"Temporarily"
+	{
+		"en"		"Temporarily"
+		"fr"		"Temporairement"
+		"ru"		"Временно"
+		"es"		"Temporalmente"
+		"de"		"Vorübergehend"
+		"pt"		"Temporariamente"
+		"chi"		"临时"
+	}
+	"Permanently"
+	{
+		"en"		"Permanently"
+		"fr"		"Définitivement"
+		"ru"		"Навсегда"
+		"es"		"Permanentemente"
+		"de"		"Dauerhaft"
+		"pt"		"Permanentemente"
+		"chi"		"永久"
+	}
+	"Menu Mute Type Group Title"
+	{
+		"#format"	"{1:s}"
+		"en"		"Choose how you want to self-mute {1} Group"
+		"fr"		"Choisissez comment vous voulez muter le groupe {1}"
+		"ru"		"Выберите, как заглушить группу {1}"
+		"es"		"Elige cómo quieres silenciar al grupo {1}"
+		"de"		"Wähle, wie du die Gruppe {1} stummschalten willst"
+		"pt"		"Escolha como você quer silenciar o grupo {1}"
+		"chi"		"选择屏蔽群组 {1} 的方式"
+	}
+	"Group Muted"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"You have {green}self-muted {olive}{1} Group\n{default}Voice Chat: {olive}{2}\n{default}Text Chat: {olive}{3}"
+		"fr"		"Vous avez {green}muté {olive}le groupe {1}\n{default}Chat vocal : {olive}{2}\n{default}Chat texte : {olive}{3}"
+		"ru"		"Вы {green}заглушили группу {olive}{1}\n{default}Голосовой чат: {olive}{2}\n{default}Текстовый чат: {olive}{3}"
+		"es"		"Has {green}silenciado al grupo {olive}{1}\n{default}Chat de voz: {olive}{2}\n{default}Chat de texto: {olive}{3}"
+		"de"		"Du hast die Gruppe {olive}{1} {green}stummgeschaltet\n{default}Sprachchat: {olive}{2}\n{default}Textchat: {olive}{3}"
+		"pt"		"Você {green}silenciou o grupo {olive}{1}\n{default}Chat de voz: {olive}{2}\n{default}Chat de texto: {olive}{3}"
+		"chi"		"你已{green}屏蔽群组 {olive}{1}\n{default}语音聊天：{olive}{2}\n{default}文字聊天：{olive}{3}"
+	}
+	"Cookie Menu Settings"
+	{
+		"en"		"Self-Mute Settings"
+		"fr"		"Paramètres du self-mute"
+		"ru"		"Настройки Self-Mute"
+		"es"		"Ajustes de Self-Mute"
+		"de"		"Self-Mute-Einstellungen"
+		"pt"		"Configurações do Self-Mute"
+		"chi"		"自我屏蔽设置"
+	}
+}
