@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.5",
+	version 		= "2.2.6",
 	url 			= ""
 };
 
@@ -851,6 +851,7 @@ void ShowSelfMuteSpecificTargets(int client, MuteTarget muteTarget) {
 		}
 	}
 
+	menu.ExitBackButton = true;
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
 }
@@ -1080,6 +1081,7 @@ void ShowMuteTypeMenu(int client, int target) {
 	FormatEx(buffer, sizeof(buffer), "%T", "Voice Chat Only", client);
 	menu.AddItem(data, buffer, flags);
 
+	flags = ITEMDRAW_DEFAULT;
 	if (muteType == MuteType_Text) {
 		flags = ITEMDRAW_DISABLED;
 	}
