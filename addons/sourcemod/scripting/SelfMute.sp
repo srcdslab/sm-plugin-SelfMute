@@ -145,7 +145,7 @@ public Plugin myinfo = {
 	name 			= "SelfMute V2",
 	author 			= "Dolly",
 	description 	= "Ignore other players in text and voicechat.",
-	version 		= "2.2.7",
+	version 		= "2.2.8",
 	url 			= ""
 };
 
