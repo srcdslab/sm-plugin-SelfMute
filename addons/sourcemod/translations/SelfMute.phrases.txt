@@ -9,6 +9,12 @@
 		"de"		"Alle Spieler"
 		"pt"		"Todos os jogadores"
 		"chi"		"所有玩家"
+		"pl"		"Wszyscy gracze"
+		"tr"		"Tüm oyuncular"
+		"it"		"Tutti i giocatori"
+		"ua"		"Усі гравці"
+		"zho"		"所有玩家"
+		"cze"		"Všichni hráči"
 	}
 	"Group Humans"
 	{
@@ -19,6 +25,12 @@
 		"de"		"Menschen"
 		"pt"		"Humanos"
 		"chi"		"人类"
+		"pl"		"Ludzie"
+		"tr"		"İnsanlar"
+		"it"		"Umani"
+		"ua"		"Люди"
+		"zho"		"人類"
+		"cze"		"Lidé"
 	}
 	"Group Zombies"
 	{
@@ -29,6 +41,12 @@
 		"de"		"Zombies"
 		"pt"		"Zumbis"
 		"chi"		"僵尸"
+		"pl"		"Zombie"
+		"tr"		"Zombiler"
+		"it"		"Zombie"
+		"ua"		"Зомбі"
+		"zho"		"殭屍"
+		"cze"		"Zombie"
 	}
 	"Group Counter Terrorists"
 	{
@@ -39,6 +57,12 @@
 		"de"		"Antiterroristen"
 		"pt"		"Contra-terroristas"
 		"chi"		"反恐精英"
+		"pl"		"Antyterroryści"
+		"tr"		"Counter-Terrorist'ler"
+		"it"		"Antiterroristi"
+		"ua"		"Контртерористи"
+		"zho"		"反恐精英"
+		"cze"		"Counter-Terroristé"
 	}
 	"Group Terrorists"
 	{
@@ -49,6 +73,12 @@
 		"de"		"Terroristen"
 		"pt"		"Terroristas"
 		"chi"		"恐怖分子"
+		"pl"		"Terroryści"
+		"tr"		"Terörist'ler"
+		"it"		"Terroristi"
+		"ua"		"Терористи"
+		"zho"		"恐怖份子"
+		"cze"		"Teroristé"
 	}
 	"Group Spectators"
 	{
@@ -59,6 +89,12 @@
 		"de"		"Zuschauer"
 		"pt"		"Espectadores"
 		"chi"		"观察者"
+		"pl"		"Widzowie"
+		"tr"		"İzleyiciler"
+		"it"		"Spettatori"
+		"ua"		"Спостерігачі"
+		"zho"		"觀察者"
+		"cze"		"Pozorovatelé"
 	}
 	"Group No-Steam Players"
 	{
@@ -69,6 +105,12 @@
 		"de"		"Nicht-Steam-Spieler"
 		"pt"		"Jogadores sem Steam"
 		"chi"		"非 Steam 玩家"
+		"pl"		"Gracze bez Steam"
+		"tr"		"Steam'siz oyuncular"
+		"it"		"Giocatori senza Steam"
+		"ua"		"Гравці без Steam"
+		"zho"		"非 Steam 玩家"
+		"cze"		"Hráči bez Steamu"
 	}
 	"Group Steam Players"
 	{
@@ -79,6 +121,12 @@
 		"de"		"Steam-Spieler"
 		"pt"		"Jogadores Steam"
 		"chi"		"Steam 玩家"
+		"pl"		"Gracze Steam"
+		"tr"		"Steam oyuncuları"
+		"it"		"Giocatori Steam"
+		"ua"		"Гравці Steam"
+		"zho"		"Steam 玩家"
+		"cze"		"Hráči se Steamem"
 	}
 	"Menu Cookies Title"
 	{
@@ -89,6 +137,12 @@
 		"de"		"Wähle deine bevorzugten Einstellungen"
 		"pt"		"Escolha suas preferências"
 		"chi"		"选择你的偏好设置"
+		"pl"		"Wybierz swoje preferencje"
+		"tr"		"Tercihlerini seç"
+		"it"		"Scegli le tue preferenze"
+		"ua"		"Оберіть свої налаштування"
+		"zho"		"選擇你的偏好設定"
+		"cze"		"Vyberte si své preference"
 	}
 	"Menu Cookies Mute Type"
 	{
@@ -99,6 +153,12 @@
 		"de"		"Stummschaltungsart: Sprache | Text | Beides | Erst fragen"
 		"pt"		"Tipo de mute: Voz | Texto | Ambos | Perguntar antes"
 		"chi"		"屏蔽类型：语音 | 文字 | 全部 | 先询问"
+		"pl"		"Typ wyciszenia: Głos | Tekst | Oba | Najpierw pytaj"
+		"tr"		"Susturma türü: Ses | Yazı | İkisi | Önce sor"
+		"it"		"Tipo di muto: Voce | Testo | Entrambi | Chiedi prima"
+		"ua"		"Тип заглушення: Голос | Текст | Обидва | Спершу питати"
+		"zho"		"靜音類型：語音 | 文字 | 全部 | 先詢問"
+		"cze"		"Typ ztlumení: Hlas | Text | Oboje | Nejdřív se zeptat"
 	}
 	"Menu Cookies Mute Duration"
 	{
@@ -109,6 +169,12 @@
 		"de"		"Dauer der Stummschaltung: Temporär | Dauerhaft | Erst fragen"
 		"pt"		"Duração do mute: Temporário | Permanente | Perguntar antes"
 		"chi"		"屏蔽时长：临时 | 永久 | 先询问"
+		"pl"		"Czas wyciszenia: Tymczasowo | Na stałe | Najpierw pytaj"
+		"tr"		"Susturma süresi: Geçici | Kalıcı | Önce sor"
+		"it"		"Durata del muto: Temporaneo | Permanente | Chiedi prima"
+		"ua"		"Тривалість заглушення: Тимчасово | Назавжди | Спершу питати"
+		"zho"		"靜音時長：暫時 | 永久 | 先詢問"
+		"cze"		"Doba ztlumení: Dočasně | Trvale | Nejdřív se zeptat"
 	}
 	"Menu Cookies Sub Title"
 	{
@@ -119,6 +185,12 @@
 		"de"		"Wähle deine bevorzugten Einstellungen: wie du einen Spieler oder eine Gruppe stummschalten willst"
 		"pt"		"Escolha suas preferências: como você quer silenciar um jogador ou um grupo"
 		"chi"		"选择你的偏好设置：你想如何屏蔽玩家或群组"
+		"pl"		"Wybierz swoje preferencje: jak chcesz wyciszać gracza lub grupę"
+		"tr"		"Tercihlerini seç: bir oyuncuyu veya grubu nasıl susturmak istediğini belirle"
+		"it"		"Scegli le tue preferenze: come vuoi silenziare un giocatore o un gruppo"
+		"ua"		"Оберіть свої налаштування: як ви хочете заглушати гравця або групу"
+		"zho"		"選擇你的偏好設定：你想如何靜音玩家或群組"
+		"cze"		"Vyberte si své preference: jak chcete ztlumit hráče nebo skupinu"
 	}
 	"Voice Chat"
 	{
@@ -129,6 +201,12 @@
 		"de"		"Sprachchat"
 		"pt"		"Chat de voz"
 		"chi"		"语音聊天"
+		"pl"		"Czat głosowy"
+		"tr"		"Sesli sohbet"
+		"it"		"Chat vocale"
+		"ua"		"Голосовий чат"
+		"zho"		"語音聊天"
+		"cze"		"Hlasový chat"
 	}
 	"Text Chat"
 	{
@@ -139,6 +217,12 @@
 		"de"		"Textchat"
 		"pt"		"Chat de texto"
 		"chi"		"文字聊天"
+		"pl"		"Czat tekstowy"
+		"tr"		"Yazılı sohbet"
+		"it"		"Chat testuale"
+		"ua"		"Текстовий чат"
+		"zho"		"文字聊天"
+		"cze"		"Textový chat"
 	}
 	"Both Chats"
 	{
@@ -149,6 +233,12 @@
 		"de"		"Beide Chats"
 		"pt"		"Ambos os chats"
 		"chi"		"两种聊天"
+		"pl"		"Oba czaty"
+		"tr"		"Her iki sohbet"
+		"it"		"Entrambe le chat"
+		"ua"		"Обидва чати"
+		"zho"		"兩種聊天"
+		"cze"		"Oba chaty"
 	}
 	"Ask First"
 	{
@@ -159,6 +249,12 @@
 		"de"		"Erst fragen"
 		"pt"		"Perguntar antes"
 		"chi"		"先询问"
+		"pl"		"Najpierw pytaj"
+		"tr"		"Önce sor"
+		"it"		"Chiedi prima"
+		"ua"		"Спершу питати"
+		"zho"		"先詢問"
+		"cze"		"Nejdřív se zeptat"
 	}
 	"Temporary"
 	{
@@ -169,6 +265,12 @@
 		"de"		"Temporär"
 		"pt"		"Temporário"
 		"chi"		"临时"
+		"pl"		"Tymczasowo"
+		"tr"		"Geçici"
+		"it"		"Temporaneo"
+		"ua"		"Тимчасово"
+		"zho"		"暫時"
+		"cze"		"Dočasně"
 	}
 	"Permanent"
 	{
@@ -179,6 +281,12 @@
 		"de"		"Dauerhaft"
 		"pt"		"Permanente"
 		"chi"		"永久"
+		"pl"		"Na stałe"
+		"tr"		"Kalıcı"
+		"it"		"Permanente"
+		"ua"		"Назавжди"
+		"zho"		"永久"
+		"cze"		"Trvale"
 	}
 	"Cookie Saved"
 	{
@@ -189,6 +297,12 @@
 		"de"		"Einstellung gespeichert!"
 		"pt"		"Preferência salva!"
 		"chi"		"设置已保存！"
+		"pl"		"Preferencja zapisana!"
+		"tr"		"Tercih kaydedildi!"
+		"it"		"Preferenza salvata!"
+		"ua"		"Налаштування збережено!"
+		"zho"		"設定已儲存！"
+		"cze"		"Preference uložena!"
 	}
 	"Not Authorized"
 	{
@@ -199,6 +313,12 @@
 		"de"		"Du musst authentifiziert sein, um diesen Befehl zu benutzen. Bitte verbinde dich neu."
 		"pt"		"Você precisa estar autenticado para usar este comando. Reconecte-se."
 		"chi"		"你需要通过验证才能使用此命令。请重新进入服务器。"
+		"pl"		"Musisz zostać uwierzytelniony, aby użyć tej komendy. Połącz się ponownie."
+		"tr"		"Bu komutu kullanmak için yetkilendirilmiş olmalısın. Lütfen yeniden bağlan."
+		"it"		"Devi essere autenticato per usare questo comando. Riconnettiti."
+		"ua"		"Ви повинні бути авторизовані, щоб використовувати цю команду. Будь ласка, перезайдіть."
+		"zho"		"你需要通過驗證才能使用此指令。請重新進入伺服器。"
+		"cze"		"Pro použití tohoto příkazu musíte být ověřeni. Připojte se prosím znovu."
 	}
 	"Unmuted All"
 	{
@@ -209,6 +329,12 @@
 		"de"		"Du hast die Stummschaltung aller Spieler und Gruppen aufgehoben."
 		"pt"		"Você removeu o silenciamento de todos os jogadores e grupos."
 		"chi"		"你已取消屏蔽所有玩家和群组。"
+		"pl"		"Wyłączono wyciszenie wszystkich graczy i grup."
+		"tr"		"Tüm oyuncuların ve grupların susturmasını kaldırdın."
+		"it"		"Hai rimosso il muto a tutti i giocatori e gruppi."
+		"ua"		"Ви зняли заглушення з усіх гравців і груп."
+		"zho"		"你已取消靜音所有玩家和群組。"
+		"cze"		"Zrušili jste ztlumení všech hráčů a skupin."
 	}
 	"Cannot Unmute Self"
 	{
@@ -219,6 +345,12 @@
 		"de"		"Du Dummerchen, du kannst deine eigene Stummschaltung nicht aufheben!"
 		"pt"		"Bobinho, você não pode remover o silenciamento de si mesmo!"
 		"chi"		"傻瓜，你不能取消屏蔽自己！"
+		"pl"		"Głuptasie, nie możesz odciszyć samego siebie!"
+		"tr"		"Aptal şey, kendi susturmanı kaldıramazsın!"
+		"it"		"Sciocchino, non puoi togliere il muto a te stesso!"
+		"ua"		"Дурнику, не можна зняти заглушення із самого себе!"
+		"zho"		"傻瓜，你不能取消靜音自己！"
+		"cze"		"Hlupáčku, nemůžete zrušit ztlumení sami sobě!"
 	}
 	"Player Not Muted"
 	{
@@ -229,6 +361,12 @@
 		"de"		"Du hast diesen Spieler nicht stummgeschaltet."
 		"pt"		"Você não silenciou este jogador."
 		"chi"		"你没有屏蔽该玩家。"
+		"pl"		"Ten gracz nie jest przez ciebie wyciszony."
+		"tr"		"Bu oyuncuyu susturmadın."
+		"it"		"Non hai silenziato questo giocatore."
+		"ua"		"Цей гравець у вас не заглушений."
+		"zho"		"你沒有靜音該玩家。"
+		"cze"		"Tohoto hráče nemáte ztlumeného."
 	}
 	"Usage PSM"
 	{
@@ -239,6 +377,12 @@
 		"de"		"Verwendung: !psm <playername|@group>"
 		"pt"		"Uso: !psm <playername|@group>"
 		"chi"		"用法：!psm <playername|@group>"
+		"pl"		"Użycie: !psm <playername|@group>"
+		"tr"		"Kullanım: !psm <playername|@group>"
+		"it"		"Uso: !psm <playername|@group>"
+		"ua"		"Використання: !psm <playername|@group>"
+		"zho"		"用法：!psm <playername|@group>"
+		"cze"		"Použití: !psm <playername|@group>"
 	}
 	"Cannot Mute Self"
 	{
@@ -249,6 +393,12 @@
 		"de"		"Du Dummerchen, du kannst dich nicht selbst stummschalten!"
 		"pt"		"Bobinho, você não pode silenciar a si mesmo!"
 		"chi"		"傻瓜，你不能屏蔽自己！"
+		"pl"		"Głuptasie, nie możesz wyciszyć samego siebie!"
+		"tr"		"Aptal şey, kendini susturamazsın!"
+		"it"		"Sciocchino, non puoi silenziare te stesso!"
+		"ua"		"Дурнику, не можна заглушити самого себе!"
+		"zho"		"傻瓜，你不能靜音自己！"
+		"cze"		"Hlupáčku, nemůžete ztlumit sami sebe!"
 	}
 	"Usage PSU"
 	{
@@ -259,6 +409,12 @@
 		"de"		"Verwendung: !psu <playername|@group>"
 		"pt"		"Uso: !psu <playername|@group>"
 		"chi"		"用法：!psu <playername|@group>"
+		"pl"		"Użycie: !psu <playername|@group>"
+		"tr"		"Kullanım: !psu <playername|@group>"
+		"it"		"Uso: !psu <playername|@group>"
+		"ua"		"Використання: !psu <playername|@group>"
+		"zho"		"用法：!psu <playername|@group>"
+		"cze"		"Použití: !psu <playername|@group>"
 	}
 	"Player Not Perma Muted"
 	{
@@ -269,6 +425,12 @@
 		"de"		"Du hast diesen Spieler nicht dauerhaft stummgeschaltet."
 		"pt"		"Você não silenciou este jogador permanentemente."
 		"chi"		"你没有永久屏蔽该玩家。"
+		"pl"		"Ten gracz nie jest przez ciebie wyciszony na stałe."
+		"tr"		"Bu oyuncuyu kalıcı olarak susturmadın."
+		"it"		"Non hai silenziato questo giocatore in modo permanente."
+		"ua"		"Цей гравець у вас не заглушений назавжди."
+		"zho"		"你沒有永久靜音該玩家。"
+		"cze"		"Tohoto hráče nemáte ztlumeného trvale."
 	}
 	"Player Not Perma Muted Use SU"
 	{
@@ -279,6 +441,12 @@
 		"de"		"Du hast diesen Spieler nicht dauerhaft stummgeschaltet. Benutze !su, um temporäre Stummschaltungen aufzuheben."
 		"pt"		"Você não silenciou este jogador permanentemente. Use !su para remover silenciamentos temporários."
 		"chi"		"你没有永久屏蔽该玩家。使用 !su 取消临时屏蔽。"
+		"pl"		"Ten gracz nie jest przez ciebie wyciszony na stałe. Użyj !su, aby usunąć tymczasowe wyciszenia."
+		"tr"		"Bu oyuncuyu kalıcı olarak susturmadın. Geçici susturmaları kaldırmak için !su kullan."
+		"it"		"Non hai silenziato questo giocatore in modo permanente. Usa !su per rimuovere i muti temporanei."
+		"ua"		"Цей гравець у вас не заглушений назавжди. Використайте !su, щоб зняти тимчасове заглушення."
+		"zho"		"你沒有永久靜音該玩家。使用 !su 取消暫時靜音。"
+		"cze"		"Tohoto hráče nemáte ztlumeného trvale. Použijte !su ke zrušení dočasného ztlumení."
 	}
 	"Player Unmuted"
 	{
@@ -290,6 +458,12 @@
 		"de"		"{green}Stummschaltung aufgehoben {default}für {olive}{1}"
 		"pt"		"Você {green}removeu o silenciamento de {olive}{1}"
 		"chi"		"你已{green}取消屏蔽 {olive}{1}"
+		"pl"		"Wyłączono wyciszenie gracza {olive}{1}"
+		"tr"		"{olive}{1} {green}oyuncusunun susturmasını {default}kaldırdın"
+		"it"		"Hai {green}rimosso il muto a {olive}{1}"
+		"ua"		"Ви {green}зняли заглушення з {olive}{1}"
+		"zho"		"你已{green}取消靜音 {olive}{1}"
+		"cze"		"Zrušili jste {green}ztlumení hráče {olive}{1}"
 	}
 	"Menu Muted List Title"
 	{
@@ -300,6 +474,12 @@
 		"de"		"Deine Liste stummgeschalteter Ziele"
 		"pt"		"Sua lista de alvos silenciados"
 		"chi"		"你的屏蔽列表"
+		"pl"		"Twoja lista wyciszonych celów"
+		"tr"		"Susturduğun hedeflerin listesi"
+		"it"		"La tua lista dei bersagli silenziati"
+		"ua"		"Ваш список заглушених цілей"
+		"zho"		"你的靜音清單"
+		"cze"		"Váš seznam ztlumených cílů"
 	}
 	"Menu Players List"
 	{
@@ -310,6 +490,12 @@
 		"de"		"Self-Mute-Liste: Spieler"
 		"pt"		"Lista de self-mute: jogadores"
 		"chi"		"屏蔽列表：玩家"
+		"pl"		"Lista self-mute: gracze"
+		"tr"		"Self-mute listesi: oyuncular"
+		"it"		"Lista self-mute: giocatori"
+		"ua"		"Список self-mute: гравці"
+		"zho"		"靜音清單：玩家"
+		"cze"		"Seznam self-mute: hráči"
 	}
 	"Menu Groups List"
 	{
@@ -320,6 +506,12 @@
 		"de"		"Self-Mute-Liste: Gruppen"
 		"pt"		"Lista de self-mute: grupos"
 		"chi"		"屏蔽列表：群组"
+		"pl"		"Lista self-mute: grupy"
+		"tr"		"Self-mute listesi: gruplar"
+		"it"		"Lista self-mute: gruppi"
+		"ua"		"Список self-mute: групи"
+		"zho"		"靜音清單：群組"
+		"cze"		"Seznam self-mute: skupiny"
 	}
 	"Menu Players Muted Title"
 	{
@@ -330,6 +522,12 @@
 		"de"		"Spieler - Self-Mute-Liste | X = Stumm"
 		"pt"		"Jogadores - lista de self-mute | X = Silenciado"
 		"chi"		"玩家 - 屏蔽列表 | X = 已屏蔽"
+		"pl"		"Gracze - lista self-mute | X = Wyciszony"
+		"tr"		"Oyuncular - self-mute listesi | X = Susturuldu"
+		"it"		"Giocatori - lista self-mute | X = Silenziato"
+		"ua"		"Гравці - список self-mute | X = Заглушено"
+		"zho"		"玩家 - 靜音清單 | X = 已靜音"
+		"cze"		"Hráči - seznam self-mute | X = Ztlumen"
 	}
 	"Menu Groups Muted Title"
 	{
@@ -340,6 +538,12 @@
 		"de"		"Gruppen - Self-Mute-Liste | X = Stumm"
 		"pt"		"Grupos - lista de self-mute | X = Silenciado"
 		"chi"		"群组 - 屏蔽列表 | X = 已屏蔽"
+		"pl"		"Grupy - lista self-mute | X = Wyciszona"
+		"tr"		"Gruplar - self-mute listesi | X = Susturuldu"
+		"it"		"Gruppi - lista self-mute | X = Silenziato"
+		"ua"		"Групи - список self-mute | X = Заглушено"
+		"zho"		"群組 - 靜音清單 | X = 已靜音"
+		"cze"		"Skupiny - seznam self-mute | X = Ztlumena"
 	}
 	"Menu Mute Status Saved"
 	{
@@ -351,6 +555,12 @@
 		"de"		"Sprache[{1}] Text[{2}] - Gespeichert"
 		"pt"		"Voz[{1}] Texto[{2}] - Salvo"
 		"chi"		"语音[{1}] 文字[{2}] - 已保存"
+		"pl"		"Głos[{1}] Tekst[{2}] - Zapisano"
+		"tr"		"Ses[{1}] Yazı[{2}] - Kaydedildi"
+		"it"		"Voce[{1}] Testo[{2}] - Salvato"
+		"ua"		"Голос[{1}] Текст[{2}] - Збережено"
+		"zho"		"語音[{1}] 文字[{2}] - 已儲存"
+		"cze"		"Hlas[{1}] Text[{2}] - Uloženo"
 	}
 	"Menu Mute Status Not Saved"
 	{
@@ -362,6 +572,12 @@
 		"de"		"Sprache[{1}] Text[{2}] - Nicht gespeichert"
 		"pt"		"Voz[{1}] Texto[{2}] - Não salvo"
 		"chi"		"语音[{1}] 文字[{2}] - 未保存"
+		"pl"		"Głos[{1}] Tekst[{2}] - Nie zapisano"
+		"tr"		"Ses[{1}] Yazı[{2}] - Kaydedilmedi"
+		"it"		"Voce[{1}] Testo[{2}] - Non salvato"
+		"ua"		"Голос[{1}] Текст[{2}] - Не збережено"
+		"zho"		"語音[{1}] 文字[{2}] - 未儲存"
+		"cze"		"Hlas[{1}] Text[{2}] - Neuloženo"
 	}
 	"No Result"
 	{
@@ -372,6 +588,12 @@
 		"de"		"Kein Ergebnis gefunden!"
 		"pt"		"Nenhum resultado encontrado!"
 		"chi"		"未找到任何结果！"
+		"pl"		"Nie znaleziono wyników!"
+		"tr"		"Sonuç bulunamadı!"
+		"it"		"Nessun risultato trovato!"
+		"ua"		"Нічого не знайдено!"
+		"zho"		"找不到任何結果！"
+		"cze"		"Nebyly nalezeny žádné výsledky!"
 	}
 	"Menu Choose Target Title"
 	{
@@ -382,6 +604,12 @@
 		"de"		"Wähle, wen du stummschalten willst"
 		"pt"		"Escolha quem você quer silenciar"
 		"chi"		"选择你要屏蔽的对象"
+		"pl"		"Wybierz, kogo chcesz wyciszyć"
+		"tr"		"Kimi susturmak istediğini seç"
+		"it"		"Scegli chi vuoi silenziare"
+		"ua"		"Оберіть, кого хочете заглушити"
+		"zho"		"選擇你要靜音的對象"
+		"cze"		"Vyberte, koho chcete ztlumit"
 	}
 	"Menu Players To Mute Title"
 	{
@@ -392,6 +620,12 @@
 		"de"		"Spieler zum Stummschalten [TEXTCHAT] [SPRACHCHAT]"
 		"pt"		"Jogadores para silenciar [CHAT DE TEXTO] [CHAT DE VOZ]"
 		"chi"		"可屏蔽的玩家 [文字聊天] [语音聊天]"
+		"pl"		"Gracze do wyciszenia [CZAT TEKSTOWY] [CZAT GŁOSOWY]"
+		"tr"		"Susturulacak oyuncular [YAZILI SOHBET] [SESLİ SOHBET]"
+		"it"		"Giocatori da silenziare [CHAT TESTUALE] [CHAT VOCALE]"
+		"ua"		"Гравці для заглушення [ТЕКСТОВИЙ ЧАТ] [ГОЛОСОВИЙ ЧАТ]"
+		"zho"		"可靜音的玩家 [文字聊天] [語音聊天]"
+		"cze"		"Hráči ke ztlumení [TEXTOVÝ CHAT] [HLASOVÝ CHAT]"
 	}
 	"Menu Groups To Mute Title"
 	{
@@ -402,6 +636,12 @@
 		"de"		"Gruppen zum Stummschalten [TEXTCHAT] [SPRACHCHAT]"
 		"pt"		"Grupos para silenciar [CHAT DE TEXTO] [CHAT DE VOZ]"
 		"chi"		"可屏蔽的群组 [文字聊天] [语音聊天]"
+		"pl"		"Grupy do wyciszenia [CZAT TEKSTOWY] [CZAT GŁOSOWY]"
+		"tr"		"Susturulacak gruplar [YAZILI SOHBET] [SESLİ SOHBET]"
+		"it"		"Gruppi da silenziare [CHAT TESTUALE] [CHAT VOCALE]"
+		"ua"		"Групи для заглушення [ТЕКСТОВИЙ ЧАТ] [ГОЛОСОВИЙ ЧАТ]"
+		"zho"		"可靜音的群組 [文字聊天] [語音聊天]"
+		"cze"		"Skupiny ke ztlumení [TEXTOVÝ CHAT] [HLASOVÝ CHAT]"
 	}
 	"Player Already Muted Change Settings"
 	{
@@ -412,6 +652,12 @@
 		"de"		"Du hast diesen Spieler bereits stummgeschaltet. Für eine andere Chatart ändere deine Einstellungen in {olive}!smcookies"
 		"pt"		"Você já silenciou este jogador. Se quiser silenciar outro tipo de chat, altere suas configurações em {olive}!smcookies"
 		"chi"		"你已屏蔽该玩家。如需屏蔽其他类型的聊天，请更改设置：{olive}!smcookies"
+		"pl"		"Ten gracz jest już przez ciebie wyciszony. Aby wyciszyć inny typ czatu, zmień ustawienia w {olive}!smcookies"
+		"tr"		"Bu oyuncuyu zaten susturdun. Başka bir sohbet türünü susturmak istiyorsan ayarlarını {olive}!smcookies {default}üzerinden değiştir"
+		"it"		"Hai già silenziato questo giocatore. Se vuoi silenziare un altro tipo di chat, cambia le impostazioni in {olive}!smcookies"
+		"ua"		"Ви вже заглушили цього гравця. Щоб заглушити інший тип чату, змініть налаштування в {olive}!smcookies"
+		"zho"		"你已靜音該玩家。如需靜音其他類型的聊天，請更改設定：{olive}!smcookies"
+		"cze"		"Tohoto hráče jste již ztlumili. Chcete-li ztlumit jiný typ chatu, změňte nastavení v {olive}!smcookies"
 	}
 	"Group Already Muted Change Settings"
 	{
@@ -422,6 +668,12 @@
 		"de"		"Du hast diese Gruppe bereits stummgeschaltet. Für eine andere Chatart ändere deine Einstellungen in {olive}!smcookies"
 		"pt"		"Você já silenciou este grupo. Se quiser silenciar outro tipo de chat, altere suas configurações em {olive}!smcookies"
 		"chi"		"你已屏蔽该群组。如需屏蔽其他类型的聊天，请更改设置：{olive}!smcookies"
+		"pl"		"Ta grupa jest już przez ciebie wyciszona. Aby wyciszyć inny typ czatu, zmień ustawienia w {olive}!smcookies"
+		"tr"		"Bu grubu zaten susturdun. Başka bir sohbet türünü susturmak istiyorsan ayarlarını {olive}!smcookies {default}üzerinden değiştir"
+		"it"		"Hai già silenziato questo gruppo. Se vuoi silenziare un altro tipo di chat, cambia le impostazioni in {olive}!smcookies"
+		"ua"		"Ви вже заглушили цю групу. Щоб заглушити інший тип чату, змініть налаштування в {olive}!smcookies"
+		"zho"		"你已靜音該群組。如需靜音其他類型的聊天，請更改設定：{olive}!smcookies"
+		"cze"		"Tuto skupinu jste již ztlumili. Chcete-li ztlumit jiný typ chatu, změňte nastavení v {olive}!smcookies"
 	}
 	"Group Not Found"
 	{
@@ -432,6 +684,12 @@
 		"de"		"Die angegebene Gruppe wurde nicht gefunden."
 		"pt"		"Não foi possível encontrar o grupo especificado."
 		"chi"		"找不到指定的群组。"
+		"pl"		"Nie można znaleźć podanej grupy."
+		"tr"		"Belirtilen grup bulunamadı."
+		"it"		"Impossibile trovare il gruppo indicato."
+		"ua"		"Указану групу не знайдено."
+		"zho"		"找不到指定的群組。"
+		"cze"		"Zadaná skupina nebyla nalezena."
 	}
 	"Group Not Muted"
 	{
@@ -442,6 +700,12 @@
 		"de"		"Du hast diese Gruppe nicht stummgeschaltet."
 		"pt"		"Você não silenciou este grupo."
 		"chi"		"你没有屏蔽该群组。"
+		"pl"		"Ta grupa nie jest przez ciebie wyciszona."
+		"tr"		"Bu grubu susturmadın."
+		"it"		"Non hai silenziato questo gruppo."
+		"ua"		"Ця група у вас не заглушена."
+		"zho"		"你沒有靜音該群組。"
+		"cze"		"Tuto skupinu nemáte ztlumenou."
 	}
 	"Group Unmuted"
 	{
@@ -453,6 +717,12 @@
 		"de"		"{green}Stummschaltung aufgehoben {default}für die Gruppe {olive}{1}"
 		"pt"		"Você {green}removeu o silenciamento do grupo {olive}{1}"
 		"chi"		"你已{green}取消屏蔽群组 {olive}{1}"
+		"pl"		"Wyłączono wyciszenie grupy {olive}{1}"
+		"tr"		"{olive}{1} {green}grubunun susturmasını {default}kaldırdın"
+		"it"		"Hai {green}rimosso il muto al gruppo {olive}{1}"
+		"ua"		"Ви {green}зняли заглушення з групи {olive}{1}"
+		"zho"		"你已{green}取消靜音群組 {olive}{1}"
+		"cze"		"Zrušili jste {green}ztlumení skupiny {olive}{1}"
 	}
 	"No Player Found"
 	{
@@ -463,6 +733,12 @@
 		"de"		"Kein Spieler gefunden."
 		"pt"		"Nenhum jogador encontrado."
 		"chi"		"未找到任何玩家。"
+		"pl"		"Nie znaleziono gracza."
+		"tr"		"Oyuncu bulunamadı."
+		"it"		"Nessun giocatore trovato."
+		"ua"		"Гравця не знайдено."
+		"zho"		"找不到任何玩家。"
+		"cze"		"Nebyl nalezen žádný hráč."
 	}
 	"Group Already Muted Type"
 	{
@@ -473,6 +749,12 @@
 		"de"		"Du hast diese Gruppe bereits im Sprachchat, im Textchat oder in beiden stummgeschaltet!"
 		"pt"		"Você já silenciou este grupo no chat de voz, de texto ou em ambos!"
 		"chi"		"你已在语音聊天、文字聊天或两者中屏蔽了该群组！"
+		"pl"		"Ta grupa jest już przez ciebie wyciszona na czacie głosowym, tekstowym lub obu!"
+		"tr"		"Bu grubu sesli sohbette, yazılı sohbette veya her ikisinde zaten susturdun!"
+		"it"		"Hai già silenziato questo gruppo nella chat vocale, testuale o in entrambe!"
+		"ua"		"Ви вже заглушили цю групу в голосовому чаті, текстовому чаті або в обох!"
+		"zho"		"你已在語音聊天、文字聊天或兩者中靜音了該群組！"
+		"cze"		"Tuto skupinu jste již ztlumili v hlasovém chatu, textovém chatu nebo v obou!"
 	}
 	"Group Already Muted All"
 	{
@@ -483,6 +765,12 @@
 		"de"		"Du hast diese Gruppe bereits im Sprach- und Textchat stummgeschaltet!"
 		"pt"		"Você já silenciou este grupo no chat de voz e de texto!"
 		"chi"		"你已在语音和文字聊天中屏蔽了该群组！"
+		"pl"		"Ta grupa jest już przez ciebie wyciszona na czacie głosowym i tekstowym!"
+		"tr"		"Bu grubu hem sesli hem yazılı sohbette zaten susturdun!"
+		"it"		"Hai già silenziato questo gruppo nella chat vocale e testuale!"
+		"ua"		"Ви вже заглушили цю групу і в голосовому, і в текстовому чаті!"
+		"zho"		"你已在語音和文字聊天中靜音了該群組！"
+		"cze"		"Tuto skupinu jste již ztlumili v hlasovém i textovém chatu!"
 	}
 	"All Players Group Already Muted"
 	{
@@ -493,6 +781,12 @@
 		"de"		"Du hast die Gruppe „Alle Spieler“ bereits stummgeschaltet, warum willst du noch eine andere Gruppe stummschalten, du Dummerchen?"
 		"pt"		"Você já silenciou o grupo Todos os jogadores, por que silenciaria outro grupo, bobinho?"
 		"chi"		"你已屏蔽了所有玩家群组，为什么还要屏蔽其他群组呢，笨蛋？"
+		"pl"		"Grupa Wszyscy gracze jest już przez ciebie wyciszona, po co wyciszać jakąkolwiek inną grupę, głuptasie?"
+		"tr"		"Tüm oyuncular grubunu zaten susturdun, başka bir grubu neden susturasın ki, aptal şey?"
+		"it"		"Hai già silenziato il gruppo Tutti i giocatori, perché dovresti silenziare un altro gruppo, sciocchino?"
+		"ua"		"Ви вже заглушили групу «Усі гравці», навіщо заглушати інші групи, дурнику?"
+		"zho"		"你已靜音了所有玩家群組，為什麼還要靜音其他群組呢，笨蛋？"
+		"cze"		"Skupinu Všichni hráči jste již ztlumili, proč byste ztlumovali jakoukoli jinou skupinu, hlupáčku?"
 	}
 	"Player Already Muted All"
 	{
@@ -503,6 +797,12 @@
 		"de"		"Du hast diesen Spieler bereits im Sprach- und Textchat stummgeschaltet!"
 		"pt"		"Você já silenciou este jogador no chat de voz e de texto!"
 		"chi"		"你已在语音和文字聊天中屏蔽了该玩家！"
+		"pl"		"Ten gracz jest już przez ciebie wyciszony na czacie głosowym i tekstowym!"
+		"tr"		"Bu oyuncuyu hem sesli hem yazılı sohbette zaten susturdun!"
+		"it"		"Hai già silenziato questo giocatore nella chat vocale e testuale!"
+		"ua"		"Ви вже заглушили цього гравця і в голосовому, і в текстовому чаті!"
+		"zho"		"你已在語音和文字聊天中靜音了該玩家！"
+		"cze"		"Tohoto hráče jste již ztlumili v hlasovém i textovém chatu!"
 	}
 	"Menu Mute Type Player Title"
 	{
@@ -514,6 +814,12 @@
 		"de"		"Wähle, wie du {1} stummschalten willst"
 		"pt"		"Escolha como você quer silenciar {1}"
 		"chi"		"选择屏蔽 {1} 的方式"
+		"pl"		"Wybierz, jak chcesz wyciszyć gracza {1}"
+		"tr"		"{1} oyuncusunu nasıl susturmak istediğini seç"
+		"it"		"Scegli come vuoi silenziare {1}"
+		"ua"		"Оберіть, як заглушити {1}"
+		"zho"		"選擇靜音 {1} 的方式"
+		"cze"		"Vyberte, jak chcete ztlumit hráče {1}"
 	}
 	"Voice Chat Only"
 	{
@@ -524,6 +830,12 @@
 		"de"		"Nur Sprachchat"
 		"pt"		"Somente chat de voz"
 		"chi"		"仅语音聊天"
+		"pl"		"Tylko czat głosowy"
+		"tr"		"Yalnızca sesli sohbet"
+		"it"		"Solo chat vocale"
+		"ua"		"Лише голосовий чат"
+		"zho"		"僅語音聊天"
+		"cze"		"Pouze hlasový chat"
 	}
 	"Text Chat Only"
 	{
@@ -534,6 +846,12 @@
 		"de"		"Nur Textchat"
 		"pt"		"Somente chat de texto"
 		"chi"		"仅文字聊天"
+		"pl"		"Tylko czat tekstowy"
+		"tr"		"Yalnızca yazılı sohbet"
+		"it"		"Solo chat testuale"
+		"ua"		"Лише текстовий чат"
+		"zho"		"僅文字聊天"
+		"cze"		"Pouze textový chat"
 	}
 	"Both Text and Voice Chats"
 	{
@@ -544,6 +862,12 @@
 		"de"		"Text- und Sprachchat"
 		"pt"		"Chat de texto e de voz"
 		"chi"		"文字和语音聊天"
+		"pl"		"Czat tekstowy i głosowy"
+		"tr"		"Yazılı ve sesli sohbet"
+		"it"		"Chat testuale e vocale"
+		"ua"		"Текстовий і голосовий чат"
+		"zho"		"文字和語音聊天"
+		"cze"		"Textový i hlasový chat"
 	}
 	"Muting Admin Warning"
 	{
@@ -554,6 +878,12 @@
 		"de"		"Du benutzt SelfMute bei einem Admin, sei vorsichtig!"
 		"pt"		"Você está usando o SelfMute em um admin, tenha cuidado!"
 		"chi"		"你正在对管理员使用屏蔽，请小心！"
+		"pl"		"Używasz SelfMute na adminie, uważaj!"
+		"tr"		"Bir admine SelfMute uyguluyorsun, dikkatli ol!"
+		"it"		"Stai usando SelfMute su un admin, fai attenzione!"
+		"ua"		"Ви використовуєте SelfMute на адміні, будьте обережні!"
+		"zho"		"你正在對管理員使用靜音，請小心！"
+		"cze"		"Používáte SelfMute na admina, dejte pozor!"
 	}
 	"Player Muted"
 	{
@@ -565,6 +895,12 @@
 		"de"		"Du hast {olive}{1} {green}stummgeschaltet\n{default}Sprachchat: {olive}{2}\n{default}Textchat: {olive}{3}"
 		"pt"		"Você {green}silenciou {olive}{1}\n{default}Chat de voz: {olive}{2}\n{default}Chat de texto: {olive}{3}"
 		"chi"		"你已{green}屏蔽 {olive}{1}\n{default}语音聊天：{olive}{2}\n{default}文字聊天：{olive}{3}"
+		"pl"		"Wyciszono gracza {olive}{1}\n{default}Czat głosowy: {olive}{2}\n{default}Czat tekstowy: {olive}{3}"
+		"tr"		"{olive}{1} {green}oyuncusunu susturdun\n{default}Sesli sohbet: {olive}{2}\n{default}Yazılı sohbet: {olive}{3}"
+		"it"		"Hai {green}silenziato {olive}{1}\n{default}Chat vocale: {olive}{2}\n{default}Chat testuale: {olive}{3}"
+		"ua"		"Ви {green}заглушили {olive}{1}\n{default}Голосовий чат: {olive}{2}\n{default}Текстовий чат: {olive}{3}"
+		"zho"		"你已{green}靜音 {olive}{1}\n{default}語音聊天：{olive}{2}\n{default}文字聊天：{olive}{3}"
+		"cze"		"Ztlumili jste {green}hráče {olive}{1}\n{default}Hlasový chat: {olive}{2}\n{default}Textový chat: {olive}{3}"
 	}
 	"Mute Saved"
 	{
@@ -575,6 +911,12 @@
 		"de"		"Die {olive}Stummschaltung {default}wurde gespeichert!"
 		"pt"		"O {olive}silenciamento {default}foi salvo!"
 		"chi"		"{olive}屏蔽{default}已保存！"
+		"pl"		"{olive}Self-mute {default}został zapisany!"
+		"tr"		"{olive}Self-mute {default}kaydedildi!"
+		"it"		"Il {olive}self-mute {default}è stato salvato!"
+		"ua"		"{olive}Заглушення {default}збережено!"
+		"zho"		"{olive}靜音{default}已儲存！"
+		"cze"		"{olive}Self-mute {default}byl uložen!"
 	}
 	"Temporarily"
 	{
@@ -585,6 +927,12 @@
 		"de"		"Vorübergehend"
 		"pt"		"Temporariamente"
 		"chi"		"临时"
+		"pl"		"Tymczasowo"
+		"tr"		"Geçici olarak"
+		"it"		"Temporaneamente"
+		"ua"		"Тимчасово"
+		"zho"		"暫時"
+		"cze"		"Dočasně"
 	}
 	"Permanently"
 	{
@@ -595,6 +943,12 @@
 		"de"		"Dauerhaft"
 		"pt"		"Permanentemente"
 		"chi"		"永久"
+		"pl"		"Na stałe"
+		"tr"		"Kalıcı olarak"
+		"it"		"Permanentemente"
+		"ua"		"Назавжди"
+		"zho"		"永久"
+		"cze"		"Trvale"
 	}
 	"Menu Mute Type Group Title"
 	{
@@ -606,6 +960,12 @@
 		"de"		"Wähle, wie du die Gruppe {1} stummschalten willst"
 		"pt"		"Escolha como você quer silenciar o grupo {1}"
 		"chi"		"选择屏蔽群组 {1} 的方式"
+		"pl"		"Wybierz, jak chcesz wyciszyć grupę {1}"
+		"tr"		"{1} grubunu nasıl susturmak istediğini seç"
+		"it"		"Scegli come vuoi silenziare il gruppo {1}"
+		"ua"		"Оберіть, як заглушити групу {1}"
+		"zho"		"選擇靜音群組 {1} 的方式"
+		"cze"		"Vyberte, jak chcete ztlumit skupinu {1}"
 	}
 	"Group Muted"
 	{
@@ -617,6 +977,12 @@
 		"de"		"Du hast die Gruppe {olive}{1} {green}stummgeschaltet\n{default}Sprachchat: {olive}{2}\n{default}Textchat: {olive}{3}"
 		"pt"		"Você {green}silenciou o grupo {olive}{1}\n{default}Chat de voz: {olive}{2}\n{default}Chat de texto: {olive}{3}"
 		"chi"		"你已{green}屏蔽群组 {olive}{1}\n{default}语音聊天：{olive}{2}\n{default}文字聊天：{olive}{3}"
+		"pl"		"Wyciszono grupę {olive}{1}\n{default}Czat głosowy: {olive}{2}\n{default}Czat tekstowy: {olive}{3}"
+		"tr"		"{olive}{1} {green}grubunu susturdun\n{default}Sesli sohbet: {olive}{2}\n{default}Yazılı sohbet: {olive}{3}"
+		"it"		"Hai {green}silenziato il gruppo {olive}{1}\n{default}Chat vocale: {olive}{2}\n{default}Chat testuale: {olive}{3}"
+		"ua"		"Ви {green}заглушили групу {olive}{1}\n{default}Голосовий чат: {olive}{2}\n{default}Текстовий чат: {olive}{3}"
+		"zho"		"你已{green}靜音群組 {olive}{1}\n{default}語音聊天：{olive}{2}\n{default}文字聊天：{olive}{3}"
+		"cze"		"Ztlumili jste {green}skupinu {olive}{1}\n{default}Hlasový chat: {olive}{2}\n{default}Textový chat: {olive}{3}"
 	}
 	"Cookie Menu Settings"
 	{
@@ -627,5 +993,11 @@
 		"de"		"Self-Mute-Einstellungen"
 		"pt"		"Configurações do Self-Mute"
 		"chi"		"自我屏蔽设置"
+		"pl"		"Ustawienia Self-Mute"
+		"tr"		"Self-Mute Ayarları"
+		"it"		"Impostazioni Self-Mute"
+		"ua"		"Налаштування Self-Mute"
+		"zho"		"自我靜音設定"
+		"cze"		"Nastavení Self-Mute"
 	}
 }
